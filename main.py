@@ -33,7 +33,8 @@ def run_command(command):
 
 
 def generate_zip(key):
-    _, _, code = run_command(f"cd {app.config['DOWNLOAD_FOLDER']} && mkdir {key}")
+    _, _, code = run_command(
+        f"cd {app.config['DOWNLOAD_FOLDER']} && mkdir {key}")
     if code != 0:
         return False
     _, _, code = run_command(
@@ -48,8 +49,16 @@ def generate_zip(key):
 
 @app.route('/')
 def index():
-    filename = request.args.get('message')
-    return render_template('index.html', filename=filename)
+    key = request.args.get('key')
+    path = f"{app.config['DOWNLOAD_FOLDER']}/{key}/{key}.py"
+    if key and os.path.exists(path):
+        with open(path, 'r') as f:
+            code = f.readlines()
+            code = [c.replace("\n", "") for c in code]
+            # code = [c.replace("    ", "\t") for c in code]
+            print(code)
+        return render_template('index.html', key=key, code=code)
+    return render_template('index.html', key=key)
 
 
 @app.route('/upload', methods=['POST'])
@@ -65,7 +74,7 @@ def upload_file():
     rst = generate_zip(key)
     if not rst:
         flash('Error in generating file!')
-        return redirect(url_for('index'))
+    return redirect(url_for('index', key=key))
     return redirect(f"/download/{key}.zip")
 
 

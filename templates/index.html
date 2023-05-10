@@ -1,77 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scratch Converter</title>
+    <title>Scratch To Python Converter</title>
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <!-- icon -->
+    <link rel="shortcut icon" href="/static/logo.png" />
   </head>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
 
-    body {
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .container {
-      width: 300px;
-      height: 100px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .container form {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    form label {
-      text-align: center;
-    }
-  </style>
-  <body>
-    <div class="container">
-      {% with messages = get_flashed_messages() %} {% if messages %}
-        {% for message in messages %}
-          <p style="text-align: center;">{{ message }}</p>
-        {% endfor %}
-      {% endif %} {% endwith %}
-      <form action="/upload" method="post" enctype="multipart/form-data">
-        <label for="file">Select file</label>
-        <input type="file" name="file" id="file" style="display: none" accept=".sb3" />
-        <button type="submit" class="upload">Generate</button>
-      </form>
-      <!-- <button class="generate"></button> -->
+  <body class="light">
+    <div class="main">
+      <div class="left">
+        <div class="logo">
+          <img src="/static/logo.png" alt="logo" />
+          <h1>Scratch To Python Converter</h1>
+        </div>
+        <div class="file-upload">
+          <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="file" class="selector">Select file</label>
+            <input type="file" name="file" id="file" style="display: none" accept=".sb3" />
+            <button type="submit" class="btn generate">Generate</button>
+          </form>
+          <button class="btn show-preview">Show Preview</button>
+        </div>
+        <div class="command">
+          <p>python -m pystage.convert.sb3 xxx.sb3 -l en -d xxx/xxx</p>
+        </div>
+        <div class="choices">
+          <div class="choice">
+            <label for="language">Language</label>
+            <select name="language" id="language">
+              <option value="en">English</option>
+              <option value="ge">German</option>
+              <option value="zh">Chinese</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <h1>Code Preview Part</h1>
+        {% if code %} {%for line in code%}
+        <pre>
+          <code>{{ line }}</code>
+        </pre>
+        {% endfor %} {% endif %}
+      </div>
     </div>
-    <script>
-      var fileInput = document.getElementById("file");
-      var label = fileInput.previousElementSibling;
-
-      fileInput.addEventListener("change", function (e) {
-        var fileName = "";
-        if (this.files && this.files.length > 1) {
-          fileName = (this.getAttribute("data-multiple-caption") || "").replace(
-            "{count}",
-            this.files.length
-          );
-        } else {
-          fileName = e.target.value.split("\\").pop();
-        }
-        if (fileName) {
-          label.innerHTML = fileName;
-        } else {
-          label.innerHTML = "Select file";
-        }
-      });
-    </script>
   </body>
+  <script>
+    let fileInput = document.getElementById("file");
+    let label = fileInput.previousElementSibling;
+
+    fileInput.addEventListener("change", function (e) {
+      var fileName = "";
+      if (this.files && this.files.length > 1) {
+        fileName = (this.getAttribute("data-multiple-caption") || "").replace(
+          "{count}",
+          this.files.length
+        );
+      } else {
+        fileName = e.target.value.split("\\").pop();
+      }
+      if (fileName) {
+        label.innerHTML = fileName;
+      } else {
+        label.innerHTML = "Select file";
+      }
+    });
+  </script>
 </html>
