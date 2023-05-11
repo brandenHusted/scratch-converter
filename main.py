@@ -21,7 +21,7 @@ def create_zip_folder(folder_path, zip_path):
 def gen_key():
     import random
     import string
-    return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(16))
+    return ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(7))
 
 
 def run_command(command):
@@ -53,11 +53,9 @@ def index():
     path = f"{app.config['DOWNLOAD_FOLDER']}/{key}/{key}.py"
     if key and os.path.exists(path):
         with open(path, 'r') as f:
-            code = f.readlines()
-            code = [c.replace("\n", "") for c in code]
-            # code = [c.replace("    ", "\t") for c in code]
+            code = f.read()
             print(code)
-        return render_template('index.html', key=key, code=code)
+        return render_template('index.html', key=key, code=code, ok=1)
     return render_template('index.html', key=key)
 
 
@@ -75,12 +73,11 @@ def upload_file():
     if not rst:
         flash('Error in generating file!')
     return redirect(url_for('index', key=key))
-    return redirect(f"/download/{key}.zip")
 
 
 @app.route('/download/<filename>')
 def download_file(filename):
-    return send_file(os.path.join(app.config['DOWNLOAD_FOLDER'], filename), as_attachment=True)
+    return send_file(os.path.join(app.config['DOWNLOAD_FOLDER'], f"{filename}.zip"), as_attachment=True)
 
 
 app.run(debug=True, host='0.0.0.0')

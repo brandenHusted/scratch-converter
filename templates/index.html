@@ -18,15 +18,22 @@
           <h1>Scratch To Python Converter</h1>
         </div>
         <div class="file-upload">
+          {% with messages = get_flashed_messages() %} {% if messages %} {% for message in
+          messages%}
+          <p style="text-align: center">{{ message }}</p>
+          {% endfor %} {% endif %} {% endwith %}
           <form action="/upload" method="post" enctype="multipart/form-data">
             <label for="file" class="selector">Select file</label>
             <input type="file" name="file" id="file" style="display: none" accept=".sb3" />
             <button type="submit" class="btn generate">Generate</button>
           </form>
-          <button class="btn show-preview">Show Preview</button>
+          <div class="btns" data-show="{{ok}}">
+            <button class="btn show-preview">Show Preview</button>
+            <button class="btn download" data-key="{{key}}">Download</button>
+          </div>
         </div>
         <div class="command">
-          <p>python -m pystage.convert.sb3 xxx.sb3 -l en -d xxx/xxx</p>
+          <p>python -m pystage.convert.sb3 xxx.sb3 -l <span id="lang"></span> -d xxx/xxx</p>
         </div>
         <div class="choices">
           <div class="choice">
@@ -37,37 +44,31 @@
               <option value="zh">Chinese</option>
             </select>
           </div>
+          <div class="choice">
+            <label for="conversion">Type of Conversion</label>
+            <select name="conversion" id="conversion">
+              <option value="vv">-vv</option>
+              <option value="l">-l</option>
+            </select>
+          </div>
         </div>
       </div>
       <div class="right">
-        <h1>Code Preview Part</h1>
-        {% if code %} {%for line in code%}
+        <!-- <h1>Code Preview</h1> -->
+        <div id="editor">{{ code }}</div>
+        <!-- {% if code %} {%for line in code%}
         <pre>
           <code>{{ line }}</code>
         </pre>
-        {% endfor %} {% endif %}
+        {% endfor %} {% endif %} -->
       </div>
     </div>
   </body>
+  <script src="/static/js/main.js"></script>
+  <script src="/static/js/ace.min.js"></script>
   <script>
-    let fileInput = document.getElementById("file");
-    let label = fileInput.previousElementSibling;
-
-    fileInput.addEventListener("change", function (e) {
-      var fileName = "";
-      if (this.files && this.files.length > 1) {
-        fileName = (this.getAttribute("data-multiple-caption") || "").replace(
-          "{count}",
-          this.files.length
-        );
-      } else {
-        fileName = e.target.value.split("\\").pop();
-      }
-      if (fileName) {
-        label.innerHTML = fileName;
-      } else {
-        label.innerHTML = "Select file";
-      }
-    });
+    const editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.session.setMode("ace/mode/python");
   </script>
 </html>
