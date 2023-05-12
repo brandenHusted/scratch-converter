@@ -47,4 +47,5 @@ def download_file(filename):
 
 if __name__ == "__main__":
     init_folder(app.config)
+    delete_files(app.config)
     app.run(debug=True, host='0.0.0.0')
