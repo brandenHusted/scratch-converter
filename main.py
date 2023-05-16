@@ -42,6 +42,33 @@ def upload_file():
     return redirect(url_for('index', key=key))
 
 
+@app.route('/upload_url', methods=['POST'])
+def upload_url():
+    url = request.form.get('scratch_url')
+    if not url:
+        flash('No url entered!')
+        return redirect(url_for('index'))
+
+    file = ScratchDownloader("/tmp/scratch").get_sb3(url)
+
+    key = gen_key()
+    if not file.save(os.path.join(app.config['UF'], f"{key}.sb3")):
+        flash('Invalid URL or internal error!')
+        return redirect(url_for('index'))
+
+    # flash('Generating file...')
+    rst = generate_zip(app.config, key)
+    if not rst[0]:
+        flash('Error in generating file!')
+        flash(rst[1])
+        flash(rst[2])
+        return redirect(url_for('index'))
+    flash('File generated successfully!')
+    # for line in rst[1].split('\r\n'):
+    #     flash(line)
+    return redirect(url_for('index', key=key))
+
+
 @app.route('/download/<filename>')
 def download_file(filename):
     return send_file(os.path.join(app.config['DF'], f"{filename}.zip"), as_attachment=True)

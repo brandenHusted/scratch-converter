@@ -52,6 +52,11 @@
             </select>
           </div>
         </div>
+        <form action="/upload_url" method="post" enctype="multipart/form-data">
+          <label for="scratch_url">Enter the scratch project url: </label>
+          <input type="text" name="scratch_url" id="scratch_url" required autocomplete="off" />
+          <button type="submit" class="btn generate">Generate</button>
+        </form>
       </div>
       <div class="right">
         <!-- <h1>Code Preview</h1> -->
