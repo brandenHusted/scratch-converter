@@ -40,7 +40,7 @@
             <label for="language">Language</label>
             <select name="language" id="language">
               <option value="en">English</option>
-              <option value="ge">German</option>
+              <option value="de">German</option>
               <option value="zh">Chinese</option>
             </select>
           </div>
@@ -70,5 +70,6 @@
     const editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
     editor.session.setMode("ace/mode/python");
+    editor.setReadOnly(true);
   </script>
 </html>
