@@ -4,4 +4,3 @@ venv/
 generated_files/*
 scratch_files/*
 *.sb3
-*.scss
