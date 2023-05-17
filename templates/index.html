@@ -17,12 +17,30 @@
     <div class="main" id="app">
       <div class="left">
         {% include 'components/header.html' %}
-        <div class="file-upload">
-          {% with messages = get_flashed_messages() %} {% if messages %} {% for
-          message in messages%}
-          <p style="text-align: center">{{ message }}</p>
-          {% endfor %} {% endif %} {% endwith %}
-          <form action="/upload" method="post" enctype="multipart/form-data">
+        <div class="step1 none">
+          <div class="guide">
+            <p class="title">How to convert a Scratch .sb3 file to python</p>
+            <p class="step">
+              Step 1: Please select a way to convert your scratch project to
+              python
+            </p>
+          </div>
+          <div class="content">
+            <div class="btns">
+              <div class="btn">Through Link</div>
+              <div class="btn">Through File</div>
+            </div>
+          </div>
+        </div>
+        <div class="step2 file none">
+          <div class="guide">
+            <p class="title">How to convert a Scratch .sb3 file to python</p>
+            <p class="step">
+              Step 2: Please upload your scratch project file that ends with
+              <b>.sb3</b>
+            </p>
+          </div>
+          <div class="content">
             <label for="file" class="selector">Select file</label>
             <input
               type="file"
@@ -31,49 +49,88 @@
               style="display: none"
               accept=".sb3"
             />
-            <div class="btn generate" id="generateBtn">Generate</div>
-            <!-- for loading animation -->
-            <button type="submit" class="none"></button>
-          </form>
-          <div class="btns" data-show="{{ok}}">
-            <button class="btn show-preview">Show Preview</button>
-            <button class="btn download" data-key="{{key}}">Download</button>
+            <div class="btns">
+              <div class="btn back">Back</div>
+              <div class="btn next">Next</div>
+            </div>
           </div>
         </div>
-        <div class="command">
-          <p>
-            python -m pystage.convert.sb3 xxx.sb3 -l <span id="lang"></span> -d
-            xxx/xxx
-          </p>
-        </div>
-        <div class="choices">
-          <div class="choice">
-            <label for="language">Language</label>
-            <select name="language" id="language">
-              <option value="en">English</option>
-              <option value="de">German</option>
-              <option value="zh">Chinese</option>
-            </select>
+        <div class="step2 link none">
+          <div class="guide">
+            <p class="title">How to convert a Scratch .sb3 file to python</p>
+            <p class="step">
+              Step 2: Please paste your scratch project link here.
+            </p>
+            <small>Like this: (Share your project first)</small>
+            <small>
+              <a
+                href="https://scratch.mit.edu/projects/844355991/"
+                target="_blank"
+              >
+                https://scratch.mit.edu/projects/844355991/
+              </a>
+            </small>
           </div>
-          <div class="choice">
-            <label for="conversion">Type of Conversion</label>
-            <select name="conversion" id="conversion">
-              <option value="vv">-vv</option>
-              <option value="l">-l</option>
-            </select>
+          <div class="content">
+            <input
+              type="text"
+              id="link"
+              placeholder="Paste your scratch project link here"
+            />
+            <div class="btns">
+              <div class="btn back">Back</div>
+              <div class="btn next">Next</div>
+            </div>
           </div>
         </div>
-        <form action="/upload_url" method="post" enctype="multipart/form-data">
-          <label for="scratch_url">Enter the scratch project url: </label>
-          <input
-            type="text"
-            name="scratch_url"
-            id="scratch_url"
-            required
-            autocomplete="off"
-          />
-          <button type="submit" class="btn generate">Generate</button>
-        </form>
+        <div class="step3">
+          <div class="guide">
+            <p class="title">How to convert a Scratch .sb3 file to python</p>
+            <p class="step">
+              Step 3: Change the language and type of conversion you want to use
+              before you click generate
+            </p>
+            <p>code in black box is the actual command executed</p>
+            <p>
+              <a
+                href="https://github.com/pystage/pystage#import-your-scratch-projects"
+                target="_blank"
+              >
+                Learn more about pystage!
+              </a>
+            </p>
+          </div>
+          <div class="content">
+            <div class="command">
+              <p>
+                python -m pystage.convert.sb3 xxx.sb3 -l
+                <span id="lang"></span> -d xxx/xxx
+              </p>
+            </div>
+            <div class="choices">
+              <div class="choice">
+                <label for="language">Language</label>
+                <select name="language" id="language">
+                  <option value="en">English</option>
+                  <option value="de">German</option>
+                  <option value="zh">Chinese</option>
+                </select>
+              </div>
+              <div class="choice">
+                <label for="conversion">Type of Conversion</label>
+                <select name="conversion" id="conversion">
+                  <option value="vv">-vv</option>
+                  <option value="l">-l</option>
+                </select>
+              </div>
+            </div>
+            <div class="btn generate">Generate</div>
+            <div class="btns">
+              <div class="btn back">Back</div>
+              <div class="btn next">Next</div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="right">
         <div id="editor">{{ code }}</div>

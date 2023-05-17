@@ -23,12 +23,21 @@ $primary08: rgba(81, 173, 204, 0.8);
   box-sizing: border-box;
 }
 
+.invisible {
+  opacity: 0;
+}
+
+.btns {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
 .btn {
   width: 200px;
   height: 35px;
   @include f-cc;
   border-radius: 10px;
-  margin-top: 30px;
   cursor: pointer;
   user-select: none;
   background-color: $primary;

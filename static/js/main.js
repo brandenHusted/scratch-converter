@@ -16,6 +16,8 @@ editor.setTheme("ace/theme/monokai");
 editor.session.setMode("ace/mode/python");
 editor.setReadOnly(true);
 
+// step 1
+
 // file upload
 const fileInput = $("#file");
 const label = fileInput.prev();

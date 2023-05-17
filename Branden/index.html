@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scratch To Python Converter</title>
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <!-- icon -->
+    <link rel="shortcut icon" href="/static/logo.png" />
+  </head>
+
+  <body class="light">
+    <div class="main">
+      <div class="left">
+        <div class="logo">
+          <img src="/static/logo.png" alt="logo" />
+          <h1>Scratch To Python Converter</h1>
+        </div>
+          <style>
+            pre {
+              font-family: inherit;
+            }
+          </style>
+        <div class="instructionsTitle">
+          <p><pre>
+            <b>
+How to convert a Scratch .sb3 file to python</b></pre></p>
+          </div>
+        <div class="instructionStep1" id="step1">
+          <pre>
+            
+Step 1: Please select a file that ends with .sb3 from your computer.
+
+</pre></p>
+        </div>
+        <div class="instructionStep2" id="step2" style="display: none">
+          <p><pre>
+
+Step 2: Change the language and type of conversion you want to use before you click generate.</pre></p>
+        <div class="formatInstrustions">
+          <p><pre>
+    
+Click generate to generate your .sb3 file to converted python code.</pre></p>
+          <p><pre>
+
+The back to file select button will let you select a <strong>different</strong> file.</pre></p>
+        </div>
+          <p><pre>
+            
+Conversion options are explained in more detail here at this link: <a href="https://github.com/pystage/pystage" target="_blank">Learn more about pystage!
+
+</a></pre></p>
+        </div>
+        <div class="instructionStep3" id="step3" style="display: none">
+          <p><pre>
+            
+Step 3: You can click show preview to see your converted python code and download to download your new .zip file.</pre></p>
+        <div class="MoreFormating">
+          <p><pre>
+            
+             Click back to generate to go back to the generate page or start over and choose another file to convert.
+
+</pre></p>
+        </div>
+        </div>
+        
+        <div class="file-upload">
+          {% with messages = get_flashed_messages() %} {% if messages %} {% for message in
+          messages%}
+          <p style="text-align: center">{{ message }}</p>
+          {% endfor %} {% endif %} {% endwith %}
+          <form action="/upload" method="post" enctype="multipart/form-data">
+            <label id = label for="file" class="selector" style="display: none"><pre>
+              
+              
+              
+Select file</pre></label>
+            <input type="file" name="file" id="file" style="display: none" accept=".sb3" />
+            <div class="choices" >
+              <div class="choice">
+                <label for="language" id = l style = "display: none" ><pre><b>
+                  
+    Language</b></pre></label>
+                <select name="language" id="language" style = "display: none" >
+                  <option value="en">English</option>
+                  <option value="ge">German</option>
+                  <option value="zh">Chinese</option>
+                </select>
+              </div>
+              <div class="choice">
+                <label for="conversion" id = c style = "display: none" ><b>Type of Conversion</b></label>
+                <select name="conversion" id="conversion" style = "display: none" >
+                  <option value="vv">-vv</option>
+                  <option value="l">-l</option>
+                </select>
+              </div>
+            </div>
+            <button id = generate type="submit" class="btn generate" style="display: none">Generate</button>
+            <div class="scratchCat">
+              <img src="static/ss.png" id = cat alt= "loading gif" style="display: none" width="100" height="80">
+            </div>
+            <button id = backToFileSelect class="btn generate" style="display: none">Back to File Select</button>
+          </form>
+          <div class="btns" data-show="{{ok}}">
+            <div class="previewBtn" data-show="{{ok}}">
+            <button id = preview class="btn show-preview" style="display: none" >Show Preview</button>
+            </div>
+          <div class="Downloadbtn" data-show="{{ok}}">
+            <button id = download class="btn download" data-key="{{key}}" style="display: none">Download</button>
+          </div>
+        </div>
+            <div class="returnToStart" data-show="{{ok}}">
+            <button id = "backToStart" class="btn download">Choose Another File to Convert</button>
+          </div>
+            <div class = GenerateBtn data-show="{{ok}}">
+            <button id = backToGenerate style="display: none" class="btn download">Back to Generate</button>  
+          </div>
+        </div>
+       
+        <div class="command" >
+          <p>python -m pystage.convert.sb3 FILE.sb3 <span id="conv"></span> <span id="lang"></span> -d DIRECTORY</p>
+        </div>
+        <div class="pystageText">
+          <p>Here is the command to convert .sb3 files to python in your terminal (replace words in all caps.)</p>
+          </div>
+      </div>
+      <div class="right">
+        <!-- <h1>Code Preview</h1> -->
+        <div id="editor">{{ code }}</div>
+        <!-- {% if code %} {%for line in code%}
+        <pre>
+          <code>{{ line }}</code>
+        </pre>
+        {% endfor %} {% endif %} -->
+      </div>
+    </div>
+  </body>
+  <script src="/static/js/main.js"></script>
+  <script src="/static/js/ace.min.js"></script>
+  <script>
+    const editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.session.setMode("ace/mode/python");
+  </script>
+</html>

@@ -18,6 +18,41 @@
   @include f-cc;
 }
 
+.guide {
+  margin-top: 10px;
+  min-width: 550px;
+  @include f-co-cen;
+
+  .title {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+  }
+
+  .step {
+    font-size: 1.2em;
+  }
+}
+
+.content {
+  margin-top: 30px;
+  gap: 20px;
+  @include f-co-cen;
+}
+
+input {
+  width: 80%;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  border: 1px solid $primary;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.2s linear;
+
+  &:focus {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
 .left {
   width: 100%;
   height: 100%;
@@ -34,28 +69,14 @@
     }
   }
 
-  .file-upload {
-    form {
-      @include f-co-cen;
-
-      .selector {
-        width: 200px;
-        height: 150px;
-        @include f-cc;
-        border-radius: 10px;
-        margin-top: 30px;
-        cursor: pointer;
-        background-color: rgb(81, 173, 204);
-        color: white;
-      }
-    }
-  }
-
-  .btns {
-    display: flex;
-    width: 500px;
-    justify-content: space-evenly;
-    display: none;
+  .selector {
+    width: 200px;
+    height: 150px;
+    @include f-cc;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgb(81, 173, 204);
+    color: white;
   }
 
   .command {
@@ -68,7 +89,6 @@
     background-color: #000;
     padding: 0 20px;
     color: white;
-    margin: 30px 0;
     border-radius: 10px;
 
     &::-webkit-scrollbar {
