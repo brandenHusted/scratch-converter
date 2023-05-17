@@ -1,9 +1,20 @@
-// file upload
-let fileInput = document.getElementById("file");
-let label = fileInput.previousElementSibling;
+// functions
+function goodString(string) {
+  let convertedString = string.toLowerCase();
+  convertedString = convertedString.replace(/\s+/g, '_');
 
-fileInput.addEventListener("change", function (e) {
-  let fileName = "";
+  return convertedString;
+}
+
+// global variables
+let fileName = "";
+
+
+// file upload
+const fileInput = $("#file");
+const label = fileInput.prev();
+
+fileInput.on("change", function(e) {
   if (this.files && this.files.length > 1) {
     fileName = (this.getAttribute("data-multiple-caption") || "").replace(
       "{count}",
@@ -13,20 +24,22 @@ fileInput.addEventListener("change", function (e) {
     fileName = e.target.value.split("\\").pop();
   }
   if (fileName) {
-    label.innerHTML = fileName;
+    label.html(fileName);
   } else {
-    label.innerHTML = "Select file";
+    label.html("Select file");
   }
 });
 
 // generate
 let generateBtn = document.querySelector(".generate");
 generateBtn.addEventListener("click", e => {
-  if (fileInput.files.length == 0) {
+  if (fileInput[0].files.length == 0) {
     e.preventDefault();
     alert("Please select a file first!!!!");
     return;
   }
+  $(".bg").show();
+  generateBtn.nextElementSibling.click()
 });
 
 // show preview btn
