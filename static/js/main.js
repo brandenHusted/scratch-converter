@@ -10,6 +10,12 @@ function goodString(string) {
 let fileName = "";
 let goodFileName = "";
 
+// editor
+const editor = ace.edit("editor");
+editor.setTheme("ace/theme/monokai");
+editor.session.setMode("ace/mode/python");
+editor.setReadOnly(true);
+
 // file upload
 const fileInput = $("#file");
 const label = fileInput.prev();
