@@ -7,6 +7,17 @@
   justify-content: space-around;
 }
 
+.bg {
+  position: absolute;
+  background-color: #000;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  @include f-cc;
+}
+
 .left {
   width: 100%;
   height: 100%;
@@ -83,24 +94,15 @@
 .right {
   position: relative;
   display: none;
-  width: 100%;
+  // width: 100%;
+  // use jquery to set animation
   height: 100%;
   background: #aaa;
   overflow: auto;
-  animation: slide 0.2s ease-in-out;
 
   #editor {
     width: 100%;
     height: 100%;
     font-size: 18px;
-  }
-}
-
-@keyframes slide {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 100%;
   }
 }
