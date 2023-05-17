@@ -11,21 +11,28 @@
   </head>
 
   <body class="light">
-    <div class="main">
+    <div class="bg" style="display: none">
+      <img src="/static/animation.gif" alt="" />
+    </div>
+    <div class="main" id="app">
       <div class="left">
-        <div class="logo">
-          <img src="/static/logo.png" alt="logo" />
-          <h1>Scratch To Python Converter</h1>
-        </div>
+        {% include 'components/header.html' %}
         <div class="file-upload">
-          {% with messages = get_flashed_messages() %} {% if messages %} {% for message in
-          messages%}
+          {% with messages = get_flashed_messages() %} {% if messages %} {% for
+          message in messages%}
           <p style="text-align: center">{{ message }}</p>
           {% endfor %} {% endif %} {% endwith %}
           <form action="/upload" method="post" enctype="multipart/form-data">
             <label for="file" class="selector">Select file</label>
-            <input type="file" name="file" id="file" style="display: none" accept=".sb3" />
-            <button type="submit" class="btn generate">Generate</button>
+            <input
+              type="file"
+              name="file"
+              id="file"
+              style="display: none"
+              accept=".sb3"
+            />
+            <div class="btn generate">Generate</div>
+            <button type="submit" class="btn generate none">Generate</button>
           </form>
           <div class="btns" data-show="{{ok}}">
             <button class="btn show-preview">Show Preview</button>
@@ -33,7 +40,10 @@
           </div>
         </div>
         <div class="command">
-          <p>python -m pystage.convert.sb3 xxx.sb3 -l <span id="lang"></span> -d xxx/xxx</p>
+          <p>
+            python -m pystage.convert.sb3 xxx.sb3 -l <span id="lang"></span> -d
+            xxx/xxx
+          </p>
         </div>
         <div class="choices">
           <div class="choice">
@@ -54,23 +64,25 @@
         </div>
         <form action="/upload_url" method="post" enctype="multipart/form-data">
           <label for="scratch_url">Enter the scratch project url: </label>
-          <input type="text" name="scratch_url" id="scratch_url" required autocomplete="off" />
+          <input
+            type="text"
+            name="scratch_url"
+            id="scratch_url"
+            required
+            autocomplete="off"
+          />
           <button type="submit" class="btn generate">Generate</button>
         </form>
       </div>
       <div class="right">
-        <!-- <h1>Code Preview</h1> -->
         <div id="editor">{{ code }}</div>
-        <!-- {% if code %} {%for line in code%}
-        <pre>
-          <code>{{ line }}</code>
-        </pre>
-        {% endfor %} {% endif %} -->
       </div>
     </div>
   </body>
-  <script src="/static/js/main.js"></script>
   <script src="/static/js/ace.min.js"></script>
+  <script src="/static/js/socket.io.min.js"></script>
+  <script src="/static/js/jquery.js"></script>
+  <script src="/static/js/main.js"></script>
   <script>
     const editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
