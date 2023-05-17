@@ -4,35 +4,29 @@
   box-sizing: border-box;
 }
 
-.bg {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background-color: #000;
-  animation: a 10s;
-}
-
 .btn {
   width: 200px;
-  height: 30px;
+  height: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
   margin-top: 30px;
   cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   background-color: rgb(81, 173, 204);
   color: white;
   border: none;
   transition: all 0.2s ease-in-out;
 }
+.btn:hover {
+  background-color: rgba(81, 173, 204, 0.8);
+}
 
 .none {
   display: none;
-}
-
-.btn:hover {
-  background-color: rgba(81, 173, 204, 0.8);
 }
 
 .light {
