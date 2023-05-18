@@ -1,13 +1,6 @@
 __pycache__
 venv/
 .vscode/
-<<<<<<< HEAD
-generated_files/*
-scratch_files/*
-*.sb3
-=======
 generated_files/
 scratch_files/
 *.sb3
-*.scss
->>>>>>> 1aede848fc898f63e98264228a048c55c7851cf0
