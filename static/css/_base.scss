@@ -1,0 +1,66 @@
+// vars
+$bg: #adc;
+$primary: rgb(81, 173, 204);
+$primary08: rgba(81, 173, 204, 0.8);
+
+// mixin
+@mixin f-cc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin f-co-cen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// preset
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.invisible {
+  opacity: 0;
+}
+
+.btns {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.btn {
+  width: 200px;
+  height: 35px;
+  @include f-cc;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  background-color: $primary;
+  color: white;
+  border: none;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $primary08;
+  }
+}
+
+.none {
+  display: none;
+}
+
+// theme
+.light {
+  background-color: #fff;
+  color: #000;
+}
+
+.dark {
+  background-color: #000;
+  color: #fff;
+}

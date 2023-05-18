@@ -1,17 +1,28 @@
 import os
+import logging
 from utils import gen_key, init_folder, generate_zip, delete_files
-from flask import Flask, redirect, request, render_template, send_file, url_for, flash
+from flask import Flask, redirect, request, render_template, send_file, url_for, flash, session
 from downloader import ScratchDownloader
 
 app = Flask(__name__)
-app.secret_key = 'secret_key'
+app.secret_key = '3jfjdja5fgj5n32j4j3'
 app.config['UF'] = 'scratch_files'
 app.config['DF'] = 'generated_files'
+
+# DEBUG, INFO, WARNING, ERROR, CRITICAL
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger("my")
+
+# get flask built-in logger
+werkzeug_logger = logging.getLogger('werkzeug')
+# only log higher than warning level
+werkzeug_logger.setLevel(logging.WARNING)
 
 
 @app.route('/')
 def index():
-    key = request.args.get('key')
+    logger.debug(session)
+    key = session.get('key')
     path = f"{app.config['DF']}/{key}/{key}.py"
     if key and os.path.exists(path):
         with open(path, 'r') as f:
@@ -27,6 +38,7 @@ def upload_file():
         flash('No file selected!')
         return redirect(url_for('index'))
     key = gen_key()
+    session["key"] = key
     file.save(os.path.join(app.config['UF'], f"{key}.sb3"))
 
     # flash('Generating file...')
@@ -39,7 +51,7 @@ def upload_file():
     flash('File generated successfully!')
     # for line in rst[1].split('\r\n'):
     #     flash(line)
-    return redirect(url_for('index', key=key))
+    return redirect(url_for('index'))
 
 
 @app.route('/upload_url', methods=['POST'])
@@ -66,7 +78,7 @@ def upload_url():
     flash('File generated successfully!')
     # for line in rst[1].split('\r\n'):
     #     flash(line)
-    return redirect(url_for('index', key=key))
+    return redirect(url_for('index'))
 
 
 @app.route('/download/<filename>')
