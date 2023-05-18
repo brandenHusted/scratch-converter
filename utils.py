@@ -30,6 +30,15 @@ def run_command(command):
     return stdout, stderr, return_code
 
 
+def get_code_from_key(config, key):
+    path = f"{config['DF']}/{key}/{key}.py"
+    if key and os.path.exists(path):
+        with open(path, 'r') as f:
+            code = f.read()
+        return code
+    return None
+
+
 def create_zip_folder(folder_path, zip_path):
     with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zip_file:
         for root, dirs, files in os.walk(folder_path):

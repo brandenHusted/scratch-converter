@@ -1,6 +1,6 @@
 import os
 import logging
-from utils import gen_key, init_folder, generate_zip, delete_files
+from utils import gen_key, init_folder, generate_zip, delete_files, get_code_from_key
 from flask import Flask, redirect, request, render_template, send_file, jsonify, url_for, flash, session
 from downloader import ScratchDownloader
 
@@ -24,11 +24,6 @@ def index():
     logger.debug(session)
     key = session.get('key')
     session.pop('key', None)
-    path = f"{app.config['DF']}/{key}/{key}.py"
-    if key and os.path.exists(path):
-        with open(path, 'r') as f:
-            code = f.read()
-        return render_template('index.html', key=key, code=code,)
     return render_template('index.html')
 
 
@@ -65,6 +60,7 @@ def upload_file():
     rsp['msg'] = "File generated successfully!"
     rsp['out'] = rst[1]
     rsp['key'] = key
+    rsp['python_code'] = get_code_from_key(app.config, key)
     return jsonify(rsp)
 
 
@@ -98,6 +94,9 @@ def upload_url():
         return jsonify(rsp)
 
     rsp['msg'] = "File generated successfully!"
+    rsp['out'] = rst[1]
+    rsp['key'] = key
+    rsp['python_code'] = get_code_from_key(app.config, key)
     return jsonify(rsp)
 
 

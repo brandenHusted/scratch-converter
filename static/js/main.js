@@ -13,10 +13,12 @@ let link = "";
 let key = "";
 
 // editor
-const editor = ace.edit("editor");
-editor.setTheme("ace/theme/monokai");
-editor.session.setMode("ace/mode/python");
-editor.setReadOnly(true);
+function beautifyEditor() {
+  const editor = ace.edit("editor");
+  editor.setTheme("ace/theme/monokai");
+  editor.session.setMode("ace/mode/python");
+  editor.setReadOnly(true);
+}
 
 // steps
 const step1 = $(".step1");
@@ -151,6 +153,8 @@ generateBtn.on("click", () => {
         console.log(data);
         if (data.code === 1) {
           key = data.key;
+          $("#editor").html(data.python_code);
+          beautifyEditor();
           step3.hide();
           step4.show();
         }
@@ -175,6 +179,8 @@ generateBtn.on("click", () => {
         console.log(data);
         if (data.code === 1) {
           key = data.key;
+          $("#editor").html(data.python_code);
+          beautifyEditor();
           step3.hide();
           step4.show();
         }
@@ -215,5 +221,5 @@ previewBtn.on("click", () => showOrClosePreview(previewBtn));
 // download
 $(".download").click(function () {
   let downloadBtn = $(this);
-  location.href = "/download/" + downloadBtn.attr("data-key");
+  location.href = "/download/" + key;
 });
