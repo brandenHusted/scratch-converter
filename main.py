@@ -1,7 +1,7 @@
 import os
 import logging
 from utils import gen_key, init_folder, generate_zip, delete_files
-from flask import Flask, redirect, request, render_template, send_file, url_for, flash, session
+from flask import Flask, redirect, request, render_template, send_file, jsonify, url_for, flash, session
 from downloader import ScratchDownloader
 
 app = Flask(__name__)
@@ -23,62 +23,82 @@ werkzeug_logger.setLevel(logging.WARNING)
 def index():
     logger.debug(session)
     key = session.get('key')
+    session.pop('key', None)
     path = f"{app.config['DF']}/{key}/{key}.py"
     if key and os.path.exists(path):
         with open(path, 'r') as f:
             code = f.read()
-        return render_template('index.html', key=key, code=code, ok=1)
+        return render_template('index.html', key=key, code=code,)
     return render_template('index.html')
 
 
-@app.route('/upload', methods=['POST'])
+@app.route('/generate/file', methods=['POST'])
 def upload_file():
+    logger.debug(request.files)
+    logger.debug(request.form)
+
+    rsp = {
+        "code": 1
+    }
+
+    if 'file' not in request.files or not request.files['file'].filename:
+        rsp['code'] = 0
+        rsp['msg'] = "No file!!"
+        return jsonify(rsp)
+
+    if "fileName" not in request.form:
+        rsp['code'] = 0
+        rsp['msg'] = "No fileName!!"
+        return jsonify(rsp)
+
     file = request.files['file']
-    if not file.filename:
-        flash('No file selected!')
-        return redirect(url_for('index'))
-    key = gen_key()
+    key = gen_key(request.form['fileName'])
     session["key"] = key
     file.save(os.path.join(app.config['UF'], f"{key}.sb3"))
-
-    # flash('Generating file...')
     rst = generate_zip(app.config, key)
     if not rst[0]:
-        flash('Error in generating file!')
-        flash(rst[1])
-        flash(rst[2])
-        return redirect(url_for('index'))
-    flash('File generated successfully!')
-    # for line in rst[1].split('\r\n'):
-    #     flash(line)
-    return redirect(url_for('index'))
+        rsp['code'] = 0
+        rsp['msg'] = "Error in generating file!"
+        rsp['out'] = rst[1]
+        rsp['err'] = rst[2]
+        return jsonify(rsp)
+    rsp['msg'] = "File generated successfully!"
+    rsp['out'] = rst[1]
+    rsp['key'] = key
+    return jsonify(rsp)
 
 
-@app.route('/upload_url', methods=['POST'])
+@app.route('/generate/link', methods=['POST'])
 def upload_url():
-    url = request.form.get('scratch_url')
-    if not url:
-        flash('No url entered!')
-        return redirect(url_for('index'))
+    logger.debug(request.get_json())
+    rsp = {
+        "code": 1
+    }
 
-    file = ScratchDownloader("/tmp/scratch").get_sb3(url)
+    if "link" not in request.get_json():
+        rsp['code'] = 0
+        rsp['msg'] = "No link!!"
+        return jsonify(rsp)
 
+    link = request.get_json()['link']
+    file = ScratchDownloader("/tmp/scratch").get_sb3(link)
     key = gen_key()
-    if not file.save(os.path.join(app.config['UF'], f"{key}.sb3")):
-        flash('Invalid URL or internal error!')
-        return redirect(url_for('index'))
 
-    # flash('Generating file...')
+    if not file.save(os.path.join(app.config['UF'], f"{key}.sb3")):
+        rsp['code'] = 0
+        rsp['msg'] = "Invalid URL or internal error!"
+        return jsonify(rsp)
+
     rst = generate_zip(app.config, key)
     if not rst[0]:
-        flash('Error in generating file!')
-        flash(rst[1])
-        flash(rst[2])
-        return redirect(url_for('index'))
-    flash('File generated successfully!')
-    # for line in rst[1].split('\r\n'):
-    #     flash(line)
-    return redirect(url_for('index'))
+        rsp['code'] = 0
+        rsp['msg'] = "Error in generating file!"
+        rsp['out'] = rst[1]
+        rsp['err'] = rst[2]
+        return jsonify(rsp)
+
+    rsp['msg'] = "File generated successfully!"
+    return jsonify(rsp)
 
 
 @app.route('/download/<filename>')

@@ -2,6 +2,8 @@ import os
 import subprocess
 import time
 import zipfile
+from string import ascii_lowercase, digits
+from random import choice
 
 
 def init_folder(config: dict):
@@ -11,9 +13,11 @@ def init_folder(config: dict):
         os.mkdir(config['DF'])
 
 
-def gen_key():
-    """return time stamp"""
-    return str(int(time.time()))
+def gen_key(prefix=""):
+    """return a random string of length 8"""
+    key = "".join(choice(ascii_lowercase + digits) for _ in range(8))
+    key = f"{prefix}_{key}"
+    return key
 
 
 def run_command(command):

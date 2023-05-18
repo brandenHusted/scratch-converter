@@ -12,27 +12,27 @@
 
   <body class="light">
     <div class="bg" style="display: none">
-      <img src="/static/animation.gif" alt="" />
+      <img src="/static/cat1.svg" alt="" id="img1" />
+      <img src="/static/cat2.svg" alt="" id="img2" />
     </div>
     <div class="main" id="app">
       <div class="left">
         {% include 'components/header.html' %}
-        <div class="step1 none">
+        <div class="steps step1">
           <div class="guide">
             <p class="title">How to convert a Scratch .sb3 file to python</p>
             <p class="step">
-              Step 1: Please select a way to convert your scratch project to
-              python
+              Step 1: Please select a way to convert your scratch project to python
             </p>
           </div>
           <div class="content">
             <div class="btns">
-              <div class="btn">Through Link</div>
-              <div class="btn">Through File</div>
+              <div class="btn link">Through Link</div>
+              <div class="btn file">Through File</div>
             </div>
           </div>
         </div>
-        <div class="step2 file none">
+        <div class="steps step2 file none">
           <div class="guide">
             <p class="title">How to convert a Scratch .sb3 file to python</p>
             <p class="step">
@@ -42,53 +42,39 @@
           </div>
           <div class="content">
             <label for="file" class="selector">Select file</label>
-            <input
-              type="file"
-              name="file"
-              id="file"
-              style="display: none"
-              accept=".sb3"
-            />
+            <input type="file" name="file" id="file" style="display: none" accept=".sb3" />
             <div class="btns">
               <div class="btn back">Back</div>
-              <div class="btn next">Next</div>
+              <div class="btn next file_">Next</div>
             </div>
           </div>
         </div>
-        <div class="step2 link none">
+        <div class="steps step2 link none">
           <div class="guide">
             <p class="title">How to convert a Scratch .sb3 file to python</p>
-            <p class="step">
-              Step 2: Please paste your scratch project link here.
-            </p>
-            <small>Like this: (Share your project first)</small>
+            <p class="step">Step 2: Please paste your scratch project link here.</p>
+            <small>Like following: (Share your project first)</small>
             <small>
-              <a
-                href="https://scratch.mit.edu/projects/844355991/"
-                target="_blank"
-              >
+              <a href="https://scratch.mit.edu/projects/844355991/" target="_blank">
                 https://scratch.mit.edu/projects/844355991/
               </a>
             </small>
           </div>
           <div class="content">
-            <input
-              type="text"
-              id="link"
-              placeholder="Paste your scratch project link here"
-            />
+            <input type="text" id="link" placeholder="Paste your scratch project link here" />
+            <small>Next button won't show up if link looks not valid</small>
             <div class="btns">
               <div class="btn back">Back</div>
-              <div class="btn next">Next</div>
+              <div class="btn next link_">Next</div>
             </div>
           </div>
         </div>
-        <div class="step3">
+        <div class="steps step3 none">
           <div class="guide">
             <p class="title">How to convert a Scratch .sb3 file to python</p>
             <p class="step">
-              Step 3: Change the language and type of conversion you want to use
-              before you click generate
+              Step 3: Change the language and type of conversion you want to use before you click
+              generate
             </p>
             <p>code in black box is the actual command executed</p>
             <p>
@@ -128,6 +114,21 @@
             <div class="btns">
               <div class="btn back">Back</div>
               <div class="btn next">Next</div>
+            </div>
+          </div>
+        </div>
+        <div class="steps step4 none">
+          <div class="guide">
+            <p class="title">How to convert a Scratch .sb3 file to python</p>
+            <p class="step">Step 4: Preview the generated code and download it</p>
+          </div>
+          <div class="content">
+            <div class="btns">
+              <button class="btn show-preview">Show Preview</button>
+              <button class="btn download" data-key="{{key}}">Download</button>
+            </div>
+            <div class="btns">
+              <div class="btn back">Back</div>
             </div>
           </div>
         </div>

@@ -36,6 +36,10 @@ class ScratchDownloader:
     def download(self, link: str) -> bool:
         self.fn = str(time())
         self.link = link
+
+        if not self.__check_url():
+            print("Invalid link")
+            return False
         driver = self.__init_webdriver()
 
         status = self.__download(driver)
@@ -58,9 +62,6 @@ class ScratchDownloader:
         return File(sb3)
 
     def __download(self, driver: Chrome) -> bool:
-        if not self.__check_url():
-            print("Invalid link")
-            return False
         try:
             driver.get(self.link)
 
