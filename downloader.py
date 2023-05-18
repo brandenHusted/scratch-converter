@@ -8,8 +8,15 @@ from time import time
 
 
 class File:
-    def __init__(self, content=None):
+    def __init__(self, file_name=None, content=None):
         self.content = content
+        self.file_name = self.make_filename_good(file_name)
+
+    def make_filename_good(self, filename):
+        if filename:
+            filename = filename.replace(" ", "_")
+            filename = filename.lower()
+        return filename
 
     def save(self, path):
         if not self.content:
@@ -27,19 +34,16 @@ class ScratchDownloader:
     ) -> None:
         cur_path = os.path.abspath(__file__)
         cur_dir = os.path.dirname(cur_path)
-        self.chrome_driver_path = os.path.join(cur_dir, "public/chromedriver")
+        self.chrome_driver_path = os.path.join(cur_dir, "chromedriver")
         self.show_browser = show_browser
         self.download_directory = download_directory
         self.link = ""
         self.fn = ""
+        self.file_name = ""
 
     def download(self, link: str) -> bool:
         self.fn = str(time())
         self.link = link
-
-        if not self.__check_url():
-            print("Invalid link")
-            return False
         driver = self.__init_webdriver()
 
         status = self.__download(driver)
@@ -59,9 +63,12 @@ class ScratchDownloader:
         os.remove(path)
         os.rmdir(f"{self.download_directory}/{self.fn}")
 
-        return File(sb3)
+        return File(self.file_name, sb3)
 
     def __download(self, driver: Chrome) -> bool:
+        if not self.__check_url():
+            print("Invalid link")
+            return False
         try:
             driver.get(self.link)
 
@@ -72,6 +79,10 @@ class ScratchDownloader:
             saveBtn = driver.find_element(
                 By.XPATH, '//*[@id="app"]/div/div[2]/div[1]/div[1]/div[3]/div/ul/li[3]')
             saveBtn.click()
+
+            titleSpan = driver.find_element(
+                By.XPATH, '//*[@id="app"]/div/div[2]/div[1]/div[5]/div/span')
+            self.file_name = titleSpan.text
 
             return self.__download_status()
         except Exception as e:
@@ -127,6 +138,6 @@ class ScratchDownloader:
 
 
 if __name__ == "__main__":
-    sd = ScratchDownloader("/tmp/scratch")
+    sd = ScratchDownloader("/home/loya/selenium_env")
     content = sd.get_sb3("https://scratch.mit.edu/projects/847425365/")
     content.save("a.sb3")

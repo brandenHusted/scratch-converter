@@ -78,7 +78,7 @@ def upload_url():
 
     link = request.get_json()['link']
     file = ScratchDownloader("/tmp/scratch").get_sb3(link)
-    key = gen_key()
+    key = gen_key(file.file_name)
 
     if not file.save(os.path.join(app.config['UF'], f"{key}.sb3")):
         rsp['code'] = 0

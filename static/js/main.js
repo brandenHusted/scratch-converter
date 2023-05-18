@@ -13,12 +13,14 @@ let link = "";
 let key = "";
 
 // editor
-function beautifyEditor() {
+const renderEditor = code => {
+  $(".right").empty();
+  $(".right").append('<div id="editor"></div>');
+  $("#editor").html(code);
   const editor = ace.edit("editor");
   editor.setTheme("ace/theme/monokai");
   editor.session.setMode("ace/mode/python");
-  editor.setReadOnly(true);
-}
+};
 
 // steps
 const step1 = $(".step1");
@@ -153,8 +155,7 @@ generateBtn.on("click", () => {
         console.log(data);
         if (data.code === 1) {
           key = data.key;
-          $("#editor").html(data.python_code);
-          beautifyEditor();
+          renderEditor(data.python_code);
           step3.hide();
           step4.show();
         }
@@ -179,8 +180,7 @@ generateBtn.on("click", () => {
         console.log(data);
         if (data.code === 1) {
           key = data.key;
-          $("#editor").html(data.python_code);
-          beautifyEditor();
+          renderEditor(data.python_code);
           step3.hide();
           step4.show();
         }
@@ -198,6 +198,7 @@ const backToStep3 = $(".step4 .back");
 backToStep3.on("click", () => {
   step4.hide();
   step3.show();
+  $(".right").hide();
 });
 
 // show preview btn
