@@ -1,7 +1,7 @@
 import os
 import logging
-from utils import gen_key, init_folder, generate_zip, delete_files, get_code_from_key
-from flask import Flask, redirect, request, render_template, send_file, jsonify, url_for, flash, session
+from utils import gen_key, init_folder, generate_zip, delete_files, get_code_from_key, check_lang
+from flask import Flask, request, render_template, send_file, jsonify
 from downloader import ScratchDownloader
 
 app = Flask(__name__)
@@ -21,9 +21,6 @@ werkzeug_logger.setLevel(logging.WARNING)
 
 @app.route('/')
 def index():
-    logger.debug(session)
-    key = session.get('key')
-    session.pop('key', None)
     return render_template('index.html')
 
 
@@ -48,9 +45,12 @@ def upload_file():
 
     file = request.files['file']
     key = gen_key(request.form['fileName'])
-    session["key"] = key
     file.save(os.path.join(app.config['UF'], f"{key}.sb3"))
-    rst = generate_zip(app.config, key)
+
+    convert_params = {
+        "lang": request.form.get("lang")
+    }
+    rst = generate_zip(app.config, key, convert_params)
     if not rst[0]:
         rsp['code'] = 0
         rsp['msg'] = "Error in generating file!"
@@ -85,7 +85,10 @@ def upload_url():
         rsp['msg'] = "Invalid URL or internal error!"
         return jsonify(rsp)
 
-    rst = generate_zip(app.config, key)
+    convert_params = {
+        "lang": request.get_json().get("lang")
+    }
+    rst = generate_zip(app.config, key, convert_params)
     if not rst[0]:
         rsp['code'] = 0
         rsp['msg'] = "Error in generating file!"

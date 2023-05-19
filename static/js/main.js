@@ -1,4 +1,6 @@
-// functions
+/////////////////////////////////////////////////////////
+////////              Functions                    ////////
+/////////////////////////////////////////////////////////
 function goodString(string) {
   let convertedString = string.toLowerCase();
   convertedString = convertedString.replace(/\s+/g, "_");
@@ -6,13 +8,17 @@ function goodString(string) {
   return convertedString;
 }
 
-// global variables
+/////////////////////////////////////////////////////////
+////////              Global Variables              ////////
+/////////////////////////////////////////////////////////
 let fileName = "";
 let goodFileName = "";
 let link = "";
 let key = "";
 
-// editor
+/////////////////////////////////////////////////////////
+////////                  Editor                   ////////
+/////////////////////////////////////////////////////////
 const renderEditor = code => {
   $(".right").empty();
   $(".right").append('<div id="editor"></div>');
@@ -22,7 +28,9 @@ const renderEditor = code => {
   editor.session.setMode("ace/mode/python");
 };
 
-// steps
+/////////////////////////////////////////////////////////
+////////                  Steps                    ////////
+/////////////////////////////////////////////////////////
 const step1 = $(".step1");
 const step2_1 = $(".step2.link");
 const step2_2 = $(".step2.file");
@@ -30,7 +38,9 @@ const step3 = $(".step3");
 const step4 = $(".step4");
 let jumpThrough = "";
 
-// step 1
+/////////////////////////////////////////////////////////
+////////                  Step1                    ////////
+/////////////////////////////////////////////////////////
 const throughLink = $(".step1 .link");
 const throughFile = $(".step1 .file");
 throughLink.on("click", () => {
@@ -42,7 +52,9 @@ throughFile.on("click", () => {
   step2_2.show();
 });
 
-// step 2
+/////////////////////////////////////////////////////////
+////////                  Step2                   ////////
+/////////////////////////////////////////////////////////
 const backToStep1 = $(".step2 .back");
 backToStep1.on("click", () => {
   step2_1.hide();
@@ -106,14 +118,16 @@ fileInput.on("change", function (e) {
   }
   if (fileName) {
     fileInputLabel.html(fileName);
+    $("#file_name").html(fileName);
     goodFileName = goodString(fileName);
-    console.log(goodFileName);
   } else {
     fileInputLabel.html("Select file");
   }
 });
 
-// step 3
+/////////////////////////////////////////////////////////
+////////                  Step3                   ////////
+/////////////////////////////////////////////////////////
 const backToStep2 = $(".step3 .back");
 backToStep2.on("click", () => {
   step3.hide();
@@ -148,7 +162,7 @@ generateBtn.on("click", () => {
     $.ajax({
       url: "/generate/link",
       method: "POST",
-      data: JSON.stringify({ link: link }),
+      data: JSON.stringify({ link: link, lang: langSelector.val() }),
       contentType: "application/json",
       success: function (data) {
         $(".bg").hide();
@@ -169,6 +183,7 @@ generateBtn.on("click", () => {
     let formData = new FormData();
     formData.append("fileName", goodFileName);
     formData.append("file", fileInput[0].files[0]);
+    formData.append("lang", langSelector.val());
     $.ajax({
       url: "/generate/file",
       method: "POST",
@@ -193,12 +208,15 @@ generateBtn.on("click", () => {
   }
 });
 
-// step 4
+/////////////////////////////////////////////////////////
+////////                  Step4                   ////////
+/////////////////////////////////////////////////////////
 const backToStep3 = $(".step4 .back");
 backToStep3.on("click", () => {
   step4.hide();
   step3.show();
   $(".right").hide();
+  $(".show-preview").html("Show Preview");
 });
 
 // show preview btn
@@ -221,6 +239,5 @@ previewBtn.on("click", () => showOrClosePreview(previewBtn));
 
 // download
 $(".download").click(function () {
-  let downloadBtn = $(this);
   location.href = "/download/" + key;
 });
