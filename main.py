@@ -30,7 +30,10 @@ def upload_file():
     logger.debug(request.form)
 
     rsp = {
-        "code": 1
+        "code": 1,
+        "msg": "",
+        "out": "",
+        "err": ""
     }
 
     if 'file' not in request.files or not request.files['file'].filename:
@@ -68,7 +71,10 @@ def upload_file():
 def upload_url():
     logger.debug(request.get_json())
     rsp = {
-        "code": 1
+        "code": 1,
+        "msg": "",
+        "out": "",
+        "err": ""
     }
 
     if "link" not in request.get_json():
@@ -105,7 +111,9 @@ def upload_url():
 
 @app.route('/download/<filename>')
 def download_file(filename):
-    return send_file(os.path.join(app.config['DF'], f"{filename}.zip"), as_attachment=True)
+    # get the original name
+    original_name = filename.rsplit("_")[0] + ".zip"
+    return send_file(os.path.join(app.config['DF'], f"{filename}.zip"), as_attachment=True, download_name=original_name)
 
 
 @app.route('/url/<id>')

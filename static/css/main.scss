@@ -37,6 +37,11 @@
     animation: img2 1s infinite;
   }
 
+  #load {
+    margin-top: 300px;
+    font-size: 50px;
+  }
+
   @keyframes img1 {
     0% {
       opacity: 1;
@@ -172,6 +177,31 @@ input {
     display: flex;
     justify-content: space-evenly;
   }
+
+  .text-box {
+    width: 70%;
+    height: 200px;
+    border: 1px solid black;
+    padding: 10px 20px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 2px;
+      height: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: white;
+    }
+
+    p {
+      margin-bottom: 8px;
+    }
+  }
 }
 
 .right {
@@ -182,10 +212,18 @@ input {
   height: 100%;
   background: #aaa;
   overflow: auto;
-
+ 
+  
+}
   #editor {
     width: 100%;
     height: 100%;
     font-size: 18px;
+     
+
   }
-}
+
+
+
+  
+  
