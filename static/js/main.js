@@ -9,10 +9,11 @@ function goodString(string) {
 }
 
 function renderTextBox(data) {
-  const {msg, out, err} = data;
+  const { msg, out, err } = data;
+  $(".text-box").html("");
 
   const outLines = out.split("\n");
-  const errLines = out.split("\n");
+  const errLines = err.split("\n");
   $(".text-box").append(`<p>${msg}</p>`);
   for (let i = 0; i < outLines.length; i++) {
     $(".text-box").append(`<p>${outLines[i]}</p>`);
@@ -33,7 +34,7 @@ let key = "";
 /////////////////////////////////////////////////////////
 ////////                  Editor                   ////////
 /////////////////////////////////////////////////////////
-const renderEditor = code => {
+const renderEditor = (code) => {
   $(".right").empty();
   $(".right").append('<div id="editor"></div>');
   $("#editor").html(code);
@@ -188,6 +189,8 @@ generateBtn.on("click", () => {
           renderEditor(data.python_code);
           step3.hide();
           step4.show();
+        } else {
+          alert(data.msg);
         }
       },
       error: function (err) {
@@ -215,6 +218,8 @@ generateBtn.on("click", () => {
           renderEditor(data.python_code);
           step3.hide();
           step4.show();
+        } else {
+          alert(data.msg);
         }
       },
       error: function (err) {
@@ -242,7 +247,7 @@ backToStart.on("click", () => {
   step1.show();
   $(".right").hide();
   $(".show-preview").html("Show Preview");
-})
+});
 
 // show preview btn
 function showOrClosePreview(btn) {
