@@ -10,7 +10,7 @@ function goodString(string) {
 
 function renderTextBox(data) {
   const { msg, out, err } = data;
-  $(".text-box").html("");
+  $(".text-box").empty();
 
   const outLines = out.split("\n");
   const errLines = err.split("\n");
@@ -82,12 +82,14 @@ const nextToStep3 = $(".step2 .next");
 nextToStep3.on("click", function () {
   step2_1.hide();
   step2_2.hide();
-  console.log($(this));
   if ($(this).hasClass("link_")) {
     jumpThrough = "link";
+    $("#file_name").html("unknown.sb3");
   } else if ($(this).hasClass("file_")) {
     jumpThrough = "file";
+    $("#file_name").html(fileName);
   }
+  $(".msg").empty();
   step3.show();
 });
 
@@ -134,7 +136,6 @@ fileInput.on("change", function (e) {
   }
   if (fileName) {
     fileInputLabel.html(fileName);
-    $("#file_name").html(fileName);
     goodFileName = goodString(fileName);
   } else {
     fileInputLabel.html("Select file");
@@ -170,33 +171,36 @@ langSelector.on("change", () => {
 });
 
 // generate
-const generateBtn = $(".step3 .generate");
-generateBtn.on("click", () => {
+$(".step3 .generate").on("click", () => {
+  const success = (data) => {
+    $(".bg").hide();
+    console.log(data);
+    if (data.code === 1) {
+      key = data.key;
+      renderTextBox(data);
+      renderEditor(data.python_code);
+      step3.hide();
+      step4.show();
+      nextToStep4.show();
+    } else {
+      $(".msg").html(data.msg);
+    }
+  };
+
+  const error = (err) => {
+    $(".bg").hide();
+    console.log(err);
+  };
+
   $(".bg").show();
-  nextToStep4.show();
   if (jumpThrough == "link") {
     $.ajax({
       url: "/generate/link",
       method: "POST",
       data: JSON.stringify({ link: link, lang: langSelector.val() }),
       contentType: "application/json",
-      success: function (data) {
-        $(".bg").hide();
-        console.log(data);
-        if (data.code === 1) {
-          key = data.key;
-          renderTextBox(data);
-          renderEditor(data.python_code);
-          step3.hide();
-          step4.show();
-        } else {
-          alert(data.msg);
-        }
-      },
-      error: function (err) {
-        $(".bg").hide();
-        console.log(err);
-      },
+      success,
+      error,
     });
   } else if (jumpThrough == "file") {
     let formData = new FormData();
@@ -209,24 +213,11 @@ generateBtn.on("click", () => {
       data: formData,
       contentType: false,
       processData: false,
-      success: function (data) {
-        $(".bg").hide();
-        console.log(data);
-        if (data.code === 1) {
-          key = data.key;
-          renderTextBox(data);
-          renderEditor(data.python_code);
-          step3.hide();
-          step4.show();
-        } else {
-          alert(data.msg);
-        }
-      },
-      error: function (err) {
-        $(".bg").hide();
-        console.log(err);
-      },
+      success,
+      error,
     });
+  } else {
+    $(".bg").hide();
   }
 });
 

@@ -61,6 +61,10 @@
   color: #0cff00;
 }
 
+.red {
+  color: red;
+}
+
 .bg {
   position: absolute;
   background-color: #000;

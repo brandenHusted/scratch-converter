@@ -1,6 +1,7 @@
 import os
 import logging
-from utils import gen_key, init_folder, generate_zip, delete_files, get_code_from_key, check_lang
+import json
+from utils import gen_key, init_folder, generate_zip, delete_files, get_code_from_key
 from flask import Flask, request, render_template, send_file, jsonify
 from downloader import ScratchDownloader
 
@@ -21,7 +22,10 @@ werkzeug_logger.setLevel(logging.WARNING)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    lang = request.accept_languages.best_match(["zh", "en", "de"])
+    with open(f"static/langs/{lang}.json", 'r') as f:
+        translation = json.load(f)
+    return render_template('index.html', **translation)
 
 
 @app.route('/generate/file', methods=['POST'])
@@ -129,4 +133,4 @@ def url(id):
 if __name__ == "__main__":
     init_folder(app.config)
     delete_files(app.config)
-    app.run(debug=False, port=5000, host='0.0.0.0')
+    app.run(debug=True, port=5000, host='0.0.0.0')

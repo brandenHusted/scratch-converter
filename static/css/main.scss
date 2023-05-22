@@ -13,6 +13,10 @@
   color: #0cff00;
 }
 
+.red {
+  color: red;
+}
+
 .bg {
   position: absolute;
   background-color: #000;
@@ -212,18 +216,9 @@ input {
   height: 100%;
   background: #aaa;
   overflow: auto;
- 
-  
 }
-  #editor {
-    width: 100%;
-    height: 100%;
-    font-size: 18px;
-     
-
-  }
-
-
-
-  
-  
+#editor {
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+}
