@@ -24,5 +24,6 @@
   "step3subhint1": "The code in black box is the actual command.",
   "step3subhint2": "Learn more about pystage!",
   "step4hint": "Step 4: Preview the generated code or download it.",
-  "success_info": "File generated successfully!"
+  "success_info": "File generated successfully!",
+  "thanks_info": "Enjoy your converted Scratch code!"
 }

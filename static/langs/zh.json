@@ -24,5 +24,6 @@
   "step3subhint1": "黑框里的命令是实际运行的命令",
   "step3subhint2": "了解 PyStage 更多！",
   "step4hint": "第四步：预览生成的代码并且下载",
-  "success_info": "文件转换成功！"
+  "success_info": "文件转换成功！",
+  "thanks_info": "Enjoy your converted Scratch code!"
 }

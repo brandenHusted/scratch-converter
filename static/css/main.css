@@ -222,6 +222,9 @@ input:focus {
   display: flex;
   justify-content: space-evenly;
 }
+.left .thanks {
+  display: flex;
+}
 .left .text-box {
   width: 70%;
   height: 200px;
