@@ -22,11 +22,14 @@ werkzeug_logger.setLevel(logging.WARNING)
 
 @app.route('/')
 def index():
-    lang = request.accept_languages.best_match(["zh", "en", "de"])
-    lang = lang if lang else "en"
+    available_langs = ["zh", "en", "de"]
+    lang = request.cookies.get("lang")
+    if lang not in available_langs:
+        lang = request.accept_languages.best_match(available_langs)
+        lang = lang if lang else "en"
     with open(f"static/langs/{lang}.json", 'r') as f:
         translation = json.load(f)
-    return render_template('index.html', **translation)
+    return render_template('index.html', **translation, lang=lang)
 
 
 @app.route('/generate/file', methods=['POST'])

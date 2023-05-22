@@ -8,6 +8,24 @@ function goodString(string) {
   return convertedString;
 }
 
+function cookie() {
+  let cookies = document.cookie.split(";");
+  let cookiePairs = {};
+
+  cookies.forEach(function (cookie) {
+    let pair = cookie.trim().split("=");
+    let name = decodeURIComponent(pair[0]);
+    let value = decodeURIComponent(pair[1]);
+    cookiePairs[name] = value;
+  });
+
+  return cookiePairs;
+}
+
+function getCookieLang() {
+  return cookie()["lang"] ? cookie()["lang"] : "en";
+}
+
 function renderTextBox(data) {
   const { msg, out, err } = data;
   $(".text-box").empty();
@@ -53,6 +71,13 @@ const step2_2 = $(".step2.file");
 const step3 = $(".step3");
 const step4 = $(".step4");
 let jumpThrough = "";
+
+$("#languageOptions").val($("#languageOptions").attr("data-lang"));
+$("#languageOptions").on("change", function () {
+  $("#languageOptions").value = $(this).val();
+  document.cookie = `lang=${$(this).val()}; `;
+  location.reload();
+});
 
 /////////////////////////////////////////////////////////
 ////////                  Step1                    ////////

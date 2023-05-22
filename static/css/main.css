@@ -57,6 +57,12 @@
   overflow: hidden;
 }
 
+.languageChoices {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
 .green {
   color: #0cff00;
 }
