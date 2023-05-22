@@ -1,14 +1,14 @@
 <div class="steps step3 none">
   <div class="guide">
-    <p class="title">How to convert a Scratch file to python</p>
-    <p class="step">Step 3: Choose the language.</p>
-    <p>The code in black box is the actual command.</p>
+    <p class="title">{{ description }}</p>
+    <p class="step">{{ step3hint }}</p>
+    <p>{{ step3subhint1 }}</p>
     <p>
       <a
         href="https://github.com/pystage/pystage#import-your-scratch-projects"
         target="_blank"
       >
-        Learn more about pystage!
+        {{ step3subhint2 }}
       </a>
     </p>
   </div>
@@ -22,19 +22,19 @@
     </div>
     <div class="choices">
       <div class="choice">
-        <label for="language">Language</label>
+        <label for="language">{{ language }}</label>
         <select name="language" id="language">
-          <option value="en">English</option>
-          <option value="de">German</option>
-          <option value="zh">Chinese</option>
+          <option value="en">{{ english }}</option>
+          <option value="de">{{ german }}</option>
+          <option value="zh">{{ chinese }}</option>
         </select>
       </div>
     </div>
     <h3 class="msg red">eerrr</h3>
-    <div class="btn generate">Generate</div>
+    <div class="btn generate">{{ generate }}</div>
     <div class="btns">
-      <div class="btn back">Back</div>
-      <div class="btn next">Next</div>
+      <div class="btn back">{{ back }}</div>
+      <div class="btn next">{{ next }}</div>
     </div>
   </div>
 </div>

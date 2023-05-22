@@ -23,6 +23,7 @@ werkzeug_logger.setLevel(logging.WARNING)
 @app.route('/')
 def index():
     lang = request.accept_languages.best_match(["zh", "en", "de"])
+    lang = lang if lang else "en"
     with open(f"static/langs/{lang}.json", 'r') as f:
         translation = json.load(f)
     return render_template('index.html', **translation)

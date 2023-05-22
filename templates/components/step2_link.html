@@ -1,8 +1,8 @@
 <div class="steps step2 link none">
   <div class="guide">
-    <p class="title">How to convert a Scratch file to python</p>
-    <p class="step">Step 2: Please paste your scratch project link here.</p>
-    <small>Like following: (Share your project first)</small>
+    <p class="title">{{ description }}</p>
+    <p class="step">{{ step2hint }}</p>
+    <small>{{ step2subhint1 }}</small>
     <small>
       <a href="https://scratch.mit.edu/projects/844355991/" target="_blank">
         https://scratch.mit.edu/projects/844355991/
@@ -10,11 +10,11 @@
     </small>
   </div>
   <div class="content">
-    <input type="text" id="link" placeholder="Paste your scratch project link here" />
-    <small>Next button won't show up if link looks not valid</small>
+    <input type="text" id="link" placeholder="{{ link_input_placeholder }}" />
+    <small>{{ step2subhint2 }}</small>
     <div class="btns">
-      <div class="btn back">Back</div>
-      <div class="btn next link_">Next</div>
+      <div class="btn back">{{ back }}</div>
+      <div class="btn next link_">{{ next }}</div>
     </div>
   </div>
 </div>

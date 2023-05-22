@@ -1,6 +1,6 @@
 <div class="steps step2 file none">
   <div class="guide">
-    <p class="title">How to convert a Scratch file to python</p>
+    <p class="title">{{ description }}</p>
     <p class="step">
       Step 2: Please upload your scratch project file that ends with
       <b>.sb3</b>
@@ -8,10 +8,16 @@
   </div>
   <div class="content">
     <label for="file" class="selector">Select file</label>
-    <input type="file" name="file" id="file" style="display: none" accept=".sb3" />
+    <input
+      type="file"
+      name="file"
+      id="file"
+      style="display: none"
+      accept=".sb3"
+    />
     <div class="btns">
-      <div class="btn back">Back</div>
-      <div class="btn next file_">Next</div>
+      <div class="btn back">{{ back }}</div>
+      <div class="btn next file_">{{ next }}</div>
     </div>
   </div>
 </div>
