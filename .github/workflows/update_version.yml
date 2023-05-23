@@ -39,9 +39,6 @@ jobs:
           # Commit the changes
           git commit -m "Update version number [automatically]"
 
-          # Push the changes to the repository
-          git push
-
       - name: Push
         uses: ad-m/github-push-action@master
         with:
