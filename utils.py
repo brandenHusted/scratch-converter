@@ -54,11 +54,10 @@ def create_zip_folder(folder_path, zip_path):
                     file_path, folder_path))
 
 
-def generate_zip(config, fn, convert_params: dict = {}, logger=None):
+def generate_zip(config, fn, convert_params: dict = {}):
     _, _, code = run_command(
         f"cd {config['DF']} && mkdir '{fn}'")
     if code != 0:
-        logger and logger.debug(f"error in make dir, {fn}")
         return False, None, None
 
     lang = check_lang(convert_params.get("lang"))

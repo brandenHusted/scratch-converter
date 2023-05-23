@@ -68,7 +68,7 @@ def upload_file():
     convert_params = {
         "lang": request.form.get("lang")
     }
-    rst = generate_zip(app.config, key, convert_params, logger)
+    rst = generate_zip(app.config, key, convert_params)
     if not rst[0]:
         rsp['code'] = 0
         rsp['msg'] = "Error in generating file!"
