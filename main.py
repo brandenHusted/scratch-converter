@@ -20,8 +20,14 @@ werkzeug_logger = logging.getLogger('werkzeug')
 werkzeug_logger.setLevel(logging.WARNING)
 
 
+def get_version():
+    with open("version", "r") as f:
+        return f"0.0.{f.read()}"
+
+
 @app.route('/')
 def index():
+    version = get_version()
     available_langs = ["zh", "en", "de"]
     lang = request.cookies.get("lang")
     if lang not in available_langs:
@@ -29,7 +35,7 @@ def index():
         lang = lang if lang else "en"
     with open(f"static/langs/{lang}.json", 'r') as f:
         translation = json.load(f)
-    return render_template('index.html', **translation, lang=lang)
+    return render_template('index.html', **translation, lang=lang, version=version)
 
 
 @app.route('/generate/file', methods=['POST'])
@@ -55,6 +61,7 @@ def upload_file():
         return jsonify(rsp)
 
     file = request.files['file']
+    logger.debug(request.form['fileName'])
     key = gen_key(request.form['fileName'])
     file.save(os.path.join(app.config['UF'], f"{key}.sb3"))
 

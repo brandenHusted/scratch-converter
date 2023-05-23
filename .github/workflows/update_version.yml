@@ -1,0 +1,40 @@
+name: Update Version
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update_version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Update Version
+        run: |
+          # Read the current version from a file
+          current_version=$(cat version)
+
+          # Increment the version number
+          new_version=$((current_version + 1))
+
+          # Save the new version to the file
+          echo $new_version > version
+
+      - name: Commit and push changes
+        run: |
+          # Configure the Git user
+          git config user.name "Zhonglin Niu"
+          git config user.email "zn23@calvin.edu"
+
+          # Stage the version file
+          git add version
+
+          # Commit the changes
+          git commit -m "Update version number [automatically]"
+
+          # Push the changes to the repository
+          git push

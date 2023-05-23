@@ -25,13 +25,18 @@
 
 .bg {
   position: absolute;
-  background-color: #000;
+  background-color: transparent;
   width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
   z-index: 999;
   @include f-cc;
+
+  * {
+    user-select: none;
+    pointer-events: none;
+  }
 
   img {
     position: absolute;

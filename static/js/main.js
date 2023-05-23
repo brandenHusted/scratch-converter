@@ -220,7 +220,7 @@ $(".step3 .generate").on("click", () => {
   $(".bg").show();
   if (jumpThrough == "link") {
     $.ajax({
-      url: "/generate/link",
+      url: "/pystage/generate/link",
       method: "POST",
       data: JSON.stringify({ link: link, lang: langSelector.val() }),
       contentType: "application/json",
@@ -233,7 +233,7 @@ $(".step3 .generate").on("click", () => {
     formData.append("file", fileInput[0].files[0]);
     formData.append("lang", langSelector.val());
     $.ajax({
-      url: "/generate/file",
+      url: "/pystage/generate/file",
       method: "POST",
       data: formData,
       contentType: false,
@@ -286,5 +286,5 @@ previewBtn.on("click", () => showOrClosePreview(previewBtn));
 
 // download
 $(".download").click(function () {
-  location.href = "/download/" + key;
+  location.href = "/pystage/download/" + key;
 });
