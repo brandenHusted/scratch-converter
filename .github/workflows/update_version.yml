@@ -27,9 +27,8 @@ jobs:
       - name: Commit and push changes
         run: |
           # Configure the Git user
-          git config user.name "Zhonglin Niu"
-          git config user.email "zn23@calvin.edu"
-          git remote set-url origin git@github.com:Zhonglin-Niu/scratch-converter.git
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
 
           # Stage the version file
           git add version
