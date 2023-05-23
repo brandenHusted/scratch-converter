@@ -4,7 +4,8 @@
 function goodString(string) {
   let convertedString = string.toLowerCase();
   convertedString = convertedString.replace(/\s+/g, "_");
-  convertedString = convertedString.replace(/\.sb3$/, "");
+  convertedString = convertedString.replace(/[^a-zA-Z0-9_]/g, "");
+  convertedString = convertedString.replace(/sb3$/, "");
   return convertedString;
 }
 
@@ -124,7 +125,7 @@ nextToStep3.on("click", function () {
     $("#file_name").html("unknown.sb3");
   } else if ($(this).hasClass("file_")) {
     jumpThrough = "file";
-    $("#file_name").html(fileName);
+    $("#file_name").html(`"${fileName}"`);
   }
   $(".msg").empty();
   step3.show();
