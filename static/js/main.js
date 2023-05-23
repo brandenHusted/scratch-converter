@@ -8,6 +8,9 @@ function goodString(string) {
   return convertedString;
 }
 
+// for deploy
+const PRE = location.href.includes("brooks") ? "/pystage" : "";
+
 function cookie() {
   let cookies = document.cookie.split(";");
   let cookiePairs = {};
@@ -40,6 +43,15 @@ function renderTextBox(data) {
     $(".text-box").append(`<p>${errLines[i]}</p>`);
   }
 }
+
+// get translation
+let translation = null;
+const getTranslation = async () => {
+  const lang = $("#languageOptions").attr("data-lang");
+  const rsp = await fetch(`${PRE}/static/langs/${lang}.json`);
+  translation = await rsp.json();
+};
+getTranslation();
 
 /////////////////////////////////////////////////////////
 ////////              Global Variables              ////////
@@ -163,7 +175,7 @@ fileInput.on("change", function (e) {
     fileInputLabel.html(fileName);
     goodFileName = goodString(fileName);
   } else {
-    fileInputLabel.html("Select file");
+    fileInputLabel.html(translation["select_file"]);
   }
 });
 
@@ -220,7 +232,7 @@ $(".step3 .generate").on("click", () => {
   $(".bg").show();
   if (jumpThrough == "link") {
     $.ajax({
-      url: "/pystage/generate/link",
+      url: `${PRE}/generate/link`,
       method: "POST",
       data: JSON.stringify({ link: link, lang: langSelector.val() }),
       contentType: "application/json",
@@ -233,7 +245,7 @@ $(".step3 .generate").on("click", () => {
     formData.append("file", fileInput[0].files[0]);
     formData.append("lang", langSelector.val());
     $.ajax({
-      url: "/pystage/generate/file",
+      url: `${PRE}/generate/file`,
       method: "POST",
       data: formData,
       contentType: false,
@@ -254,7 +266,7 @@ backToStep3.on("click", () => {
   step4.hide();
   step3.show();
   $(".right").hide();
-  $(".show-preview").html("Show Preview");
+  $(".show-preview").html(translation["show_preview"]);
 });
 
 const backToStart = $(".step4 .next");
@@ -262,20 +274,20 @@ backToStart.on("click", () => {
   step4.hide();
   step1.show();
   $(".right").hide();
-  $(".show-preview").html("Show Preview");
+  $(".show-preview").html(translation["show_preview"]);
 });
 
 // show preview btn
 function showOrClosePreview(btn) {
   let right = $(".main > .right");
   if (right.is(":visible")) {
-    btn.html("Show Preview");
+    btn.html(translation["show_preview"]);
     right.animate({ width: 0 }, 500, function () {
       $(this).hide();
     });
     return;
   }
-  btn.html("Close Preview");
+  btn.html(translation["close_preview"]);
 
   // it's flex, so 100% only shows 50%
   right.show().animate({ width: "100%" }, 500);
@@ -286,5 +298,5 @@ previewBtn.on("click", () => showOrClosePreview(previewBtn));
 
 // download
 $(".download").click(function () {
-  location.href = "/pystage/download/" + key;
+  location.href = `${PRE}/download/` + key;
 });

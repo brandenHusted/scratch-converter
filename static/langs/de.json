@@ -17,6 +17,7 @@
   "through_link": "Durch Link",
   "through_file": "Durch Datei",
   "step2hint": "Schritt 2: Bitte fügen Sie hier den Link zu Ihrem Scratch-Projekt ein.",
+  "step2_file": "Schritt 2: Bitte laden Sie Ihre Scratch-Projektdatei hoch, die mit endet",
   "step2subhint1": "Wie folgt: (Teilen Sie zuerst Ihr Projekt)",
   "link_input_placeholder": "Fügen Sie hier den Link zu Ihrem Scratch-Projekt ein",
   "step2subhint2": "Die Schaltfläche „Weiter“ wird nicht angezeigt, wenn der Link ungültig erscheint",
@@ -25,5 +26,6 @@
   "step3subhint2": "Erfahren Sie mehr über Pystage!",
   "step4hint": "Schritt 4: Sehen Sie sich den generierten Code in der Vorschau an oder laden Sie ihn herunter.",
   "success_info": "Datei erfolgreich generiert!",
-  "thanks_info": "Viel Spaß mit Ihrem konvertierten Scratch-Code!"
+  "thanks_info": "Viel Spaß mit Ihrem konvertierten Scratch-Code!",
+  "select_file": "Datei aussuchen"
 }
