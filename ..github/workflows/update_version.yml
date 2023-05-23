@@ -1,46 +1,38 @@
-# name: Update Version
+name: Update Version
 
-# on:
-#   push:
-#     branches:
-#       - main
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "version"
 
-# jobs:
-#   update_version:
-#     runs-on: ubuntu-latest
+jobs:
+  update_version:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Check out code
-#         uses: actions/checkout@v3
-#         with:
-#           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
-#           fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
 
-#       - name: Update Version
-#         run: |
-#           # Read the current version from a file
-#           current_version=$(cat version)
+      - name: Update Version
+        run: |
+          current_version=$(cat version)
+          new_version=$((current_version + 1))
+          echo $new_version > version
 
-#           # Increment the version number
-#           new_version=$((current_version + 1))
+      - name: Commit
+        run: |
+          git config user.email "github-actions[bot]@github.com"
+          git config user.name "github-actions[bot]"
+          git add version
+          git commit -m "Update version number [automatically]"
 
-#           # Save the new version to the file
-#           echo $new_version > version
-
-#       - name: Commit
-#         run: |
-#           # Configure the Git user
-#           git config user.email "github-actions[bot]@github.com"
-#           git config user.name "github-actions[bot]"
-
-#           # Stage the version file
-#           git add version
-
-#           # Commit the changes
-#           git commit -m "Update version number [automatically]"
-
-#       - name: Push
-#         uses: ad-m/github-push-action@master
-#         with:
-#           github_token: ${{ secrets.TOKEN }}
-#           branch: main
+      - name: Push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.TOKEN }}
+          branch: main
