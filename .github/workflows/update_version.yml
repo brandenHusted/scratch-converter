@@ -10,9 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-
       - name: Update Version
         run: |
           # Read the current version from a file
@@ -24,7 +21,8 @@ jobs:
           # Save the new version to the file
           echo $new_version > version
 
-      - name: Commit and push changes
+      - name: Check out code
+        uses: actions/checkout@v2
         run: |
           # Configure the Git user
           git config user.name "GitHub Actions"
