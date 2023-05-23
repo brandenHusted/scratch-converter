@@ -2,12 +2,12 @@
   <div class="guide">
     <p class="title">{{ description }}</p>
     <p class="step">
-      Step 2: Please upload your scratch project file that ends with
+      {{ step2_file }}
       <b>.sb3</b>
     </p>
   </div>
   <div class="content">
-    <label for="file" class="selector">Select file</label>
+    <label for="file" class="selector">{{ select_file }}</label>
     <input
       type="file"
       name="file"

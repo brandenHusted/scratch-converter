@@ -7,13 +7,13 @@
         <option value="de">{{ german }}</option>
         <option value="zh">{{ chinese }}</option>
       </select>
-      <p>Scratch To Python Converter {{ version }}</p>
+      <p>{{ title }} {{ version }}</p>
       <p>
         <a href="https://github.com/pystage/pystage" target="_blank">PyStage</a>
         0.0.16
       </p>
     </div>
   </div>
-  <img src="/pystage/static/logo.png" alt="logo" />
+  <img src="{{ url_for('static', filename='logo.png') }}" alt="logo" />
   <h1>{{ title }}</h1>
 </div>
