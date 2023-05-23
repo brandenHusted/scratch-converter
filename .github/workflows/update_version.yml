@@ -29,6 +29,7 @@ jobs:
           # Configure the Git user
           git config user.name "Zhonglin Niu"
           git config user.email "zn23@calvin.edu"
+          git remote set-url origin git@github.com:Zhonglin-Niu/scratch-converter.git
 
           # Stage the version file
           git add version
