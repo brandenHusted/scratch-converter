@@ -56,13 +56,13 @@ def create_zip_folder(folder_path, zip_path):
 
 def generate_zip(config, fn, convert_params: dict = {}):
     _, _, code = run_command(
-        f"cd {config['DF']} && mkdir {fn}")
+        f"cd {config['DF']} && mkdir '{fn}'")
     if code != 0:
         return False, None, None
 
     lang = check_lang(convert_params.get("lang"))
     out, err, code = run_command(
-        f"python -m pystage.convert.sb3 {config['UF']}/{fn}.sb3 -l {lang} -d {config['DF']}/{fn}")
+        f"python -m pystage.convert.sb3 '{config['UF']}/{fn}.sb3' -l {lang} -d {config['DF']}/{fn}")
     if code != 0:
         return False, out, err
 

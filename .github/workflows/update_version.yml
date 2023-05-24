@@ -4,35 +4,35 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - "version"
 
 jobs:
   update_version:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
       - name: Update Version
         run: |
-          # Read the current version from a file
           current_version=$(cat version)
-
-          # Increment the version number
           new_version=$((current_version + 1))
-
-          # Save the new version to the file
           echo $new_version > version
 
-      - name: Check out code
-        uses: actions/checkout@v2
+      - name: Commit
         run: |
-          # Configure the Git user
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-
-          # Stage the version file
+          git config user.email "github-actions[bot]@github.com"
+          git config user.name "github-actions[bot]"
           git add version
-
-          # Commit the changes
           git commit -m "Update version number [automatically]"
 
-          # Push the changes to the repository
-          git push
+      - name: Push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.TOKEN }}
+          branch: main

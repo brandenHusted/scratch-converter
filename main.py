@@ -127,18 +127,9 @@ def upload_url():
 @app.route('/download/<filename>')
 def download_file(filename):
     # get the original name
-    original_name = filename.rsplit("_")[0] + ".zip"
+    original_name = filename.rsplit("_", 1)[0] + ".zip"
+    logger.debug(f"{filename}, {original_name}")
     return send_file(os.path.join(app.config['DF'], f"{filename}.zip"), as_attachment=True, download_name=original_name)
-
-
-@app.route('/url/<id>')
-def url(id):
-    url = f"https://scratch.mit.edu/projects/{id}/"
-    rst = ScratchDownloader("/tmp/scratch").get_sb3(url)
-    if rst.save(f"{app.config['UF']}/{id}.sb3"):
-        return send_file(f"{app.config['UF']}/{id}.sb3", as_attachment=True)
-    else:
-        return "Error"
 
 
 if __name__ == "__main__":
