@@ -27,5 +27,6 @@
   "step4hint": "Step 4: Preview the generated code or download it.",
   "success_info": "File generated successfully!",
   "thanks_info": "Enjoy your converted Scratch code!",
-  "select_file": "Select file"
+  "select_file": "Select file",
+  "tutorial" : "Tutorial"
 }

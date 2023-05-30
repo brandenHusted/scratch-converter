@@ -27,6 +27,7 @@
   "step4hint": "第四步：预览生成的代码并且下载",
   "success_info": "文件转换成功！",
   "thanks_info": "享受转换后的 Scratch 代码吧！",
-  "select_file": "选择文件"
+  "select_file": "选择文件",
+  "tutorial" : "教程"
   
 }
