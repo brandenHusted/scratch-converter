@@ -30,6 +30,25 @@
   border: none;
   transition: all 0.2s ease-in-out;
 }
+
+.tutorialbtn {
+  width: 200px;
+  height: 35px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  background-color: rgb(81, 173, 204);
+  color: white;
+  border: none;
+  transition: all 0.2s ease-in-out;
+  top: 0%
+  
+}
+
 .btn:hover {
   background-color: rgba(81, 173, 204, 0.8);
 }
@@ -233,6 +252,9 @@ input:focus {
 .left .choices {
   display: flex;
   justify-content: space-evenly;
+}
+.left .tutorial {
+  display: center;
 }
 .left .thanks {
   display: flex;

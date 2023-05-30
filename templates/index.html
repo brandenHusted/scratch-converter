@@ -7,12 +7,12 @@
     <title>Scratch To Python Converter</title>
     <link
       rel="stylesheet"
-      href="/pystage{{ url_for('static', filename='css/main.css') }}"
+      href="{{ url_for('static', filename='css/main.css') }}"
     />
     <!-- icon -->
     <link
       rel="shortcut icon"
-      href="/pystage{{ url_for('static', filename='logo.png') }}"
+      href="{{ url_for('static', filename='logo.png') }}"
     />
   </head>
 
@@ -20,12 +20,12 @@
     <div class="bg" style="display: none">
       <p style="color: white" id="load">{{ loading }}</p>
       <img
-        src="/pystage{{ url_for('static', filename='cat1.svg') }}"
+        src="{{ url_for('static', filename='cat1.svg') }}"
         alt=""
         id="img1"
       />
       <img
-        src="/pystage{{ url_for('static', filename='cat2.svg') }}"
+        src="{{ url_for('static', filename='cat2.svg') }}"
         alt=""
         id="img2"
       />
@@ -44,14 +44,16 @@
         {% include 'components/step3.html' %}
         <!-- -->
         {% include 'components/step4.html' %}
+        <!-- -->
+        {% include 'components/tutorial_dog.html' %}
       </div>
       <div class="right">
         <!-- <div id="editor"></div> -->
       </div>
     </div>
   </body>
-  <script src="/pystage{{ url_for('static', filename='js/ace.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/ace.min.js') }}"></script>
   <!-- <script src="static/js/socket.io.min.js"></script> -->
-  <script src="/pystage{{ url_for('static', filename='js/jquery.js') }}"></script>
-  <script src="/pystage{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </html>
