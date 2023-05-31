@@ -33,7 +33,7 @@ def get_translation():
         lang = lang if lang else "en"
     with open(f"static/langs/{lang}.json", 'r') as f:
         translation = json.load(f)
-        
+
     return translation, lang
 
 
@@ -55,8 +55,8 @@ def gen_rsp():
 def index():
     version = get_version()
     translation, lang = get_translation()
-    
-    if request.url.count("pystage") > 0:
+
+    if request.headers.get("X-Forwarded-Host").count("calvin") > 0:
         prefix = "/pystage"
     else:
         prefix = ""
