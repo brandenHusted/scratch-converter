@@ -1,6 +1,5 @@
 import os
 import subprocess
-import time
 import zipfile
 from string import ascii_lowercase, digits
 from random import choice

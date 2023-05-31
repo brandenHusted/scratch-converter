@@ -25,9 +25,7 @@ def get_version():
         return f"0.0.{f.read()}"
 
 
-@app.route('/')
-def index():
-    version = get_version()
+def get_translation():
     available_langs = ["zh", "en", "de"]
     lang = request.cookies.get("lang")
     if lang not in available_langs:
@@ -35,12 +33,33 @@ def index():
         lang = lang if lang else "en"
     with open(f"static/langs/{lang}.json", 'r') as f:
         translation = json.load(f)
+        
+    return translation, lang
+
+
+def get_trans_from(key):
+    translation, _ = get_translation()
+    return translation.get(key, "Not Implemented")
+
+
+def gen_rsp():
+    return {
+        "code": 1,
+        "msg": "",
+        "out": "",
+        "err": ""
+    }
+
+
+@app.route('/')
+def index():
+    version = get_version()
+    translation, lang = get_translation()
     
     if request.url.count("pystage") > 0:
         prefix = "/pystage"
     else:
         prefix = ""
-        
     return render_template('index.html', **translation, lang=lang, version=version, prefix=prefix)
 
 
@@ -49,12 +68,7 @@ def upload_file():
     logger.debug(request.files)
     logger.debug(request.form)
 
-    rsp = {
-        "code": 1,
-        "msg": "",
-        "out": "",
-        "err": ""
-    }
+    rsp = gen_rsp()
 
     if 'file' not in request.files or not request.files['file'].filename:
         rsp['code'] = 0
@@ -77,11 +91,11 @@ def upload_file():
     rst = generate_zip(app.config, key, convert_params)
     if not rst[0]:
         rsp['code'] = 0
-        rsp['msg'] = "Error in generating file!"
+        rsp['msg'] = get_trans_from("error_in_generating")
         rsp['out'] = rst[1]
         rsp['err'] = rst[2]
         return jsonify(rsp)
-    rsp['msg'] = "File generated successfully!"
+    rsp['msg'] = get_trans_from("success_in_generating")
     rsp['out'] = rst[1]
     rsp['key'] = key
     rsp['python_code'] = get_code_from_key(app.config, key)
@@ -91,12 +105,7 @@ def upload_file():
 @app.route('/generate/link', methods=['POST'])
 def upload_url():
     logger.debug(request.get_json())
-    rsp = {
-        "code": 1,
-        "msg": "",
-        "out": "",
-        "err": ""
-    }
+    rsp = gen_rsp()
 
     if "link" not in request.get_json():
         rsp['code'] = 0
@@ -118,12 +127,12 @@ def upload_url():
     rst = generate_zip(app.config, key, convert_params)
     if not rst[0]:
         rsp['code'] = 0
-        rsp['msg'] = "Error in generating file!"
+        rsp['msg'] = get_trans_from("error_in_generating")
         rsp['out'] = rst[1]
         rsp['err'] = rst[2]
         return jsonify(rsp)
 
-    rsp['msg'] = "File generated successfully!"
+    rsp['msg'] = get_trans_from("success_in_generating")
     rsp['out'] = rst[1]
     rsp['key'] = key
     rsp['python_code'] = get_code_from_key(app.config, key)

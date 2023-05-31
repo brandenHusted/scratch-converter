@@ -17,7 +17,7 @@
   "through_link": "通过链接",
   "through_file": "通过文件",
   "step2hint": "请粘贴你的 Scratch 文件的网址链接",
-  "step2_file" : "第二步：请上传以以下结尾的临时项目文件",
+  "step2_file": "第二步：请上传以以下结尾的临时项目文件",
   "step2subhint1": "像下面的链接一样（需要先分享你的 Scratch 项目）",
   "link_input_placeholder": "粘贴你的 Scratch 项目链接",
   "step2subhint2": "链接匹配的话，下一步按钮才会出现",
@@ -28,6 +28,7 @@
   "success_info": "文件转换成功！",
   "thanks_info": "享受转换后的 Scratch 代码吧！",
   "select_file": "选择文件",
-  "tutorial" : "点击狗开始教程"
-  
+  "tutorial" : "点击狗开始教程",
+  "error_in_generating": "生成文件失败！",
+  "success_in_generating": "文件生成成功！"
 }

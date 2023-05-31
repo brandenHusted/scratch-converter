@@ -17,7 +17,7 @@
   "through_link": "Through Link",
   "through_file": "Through File",
   "step2hint": "Step 2: Please paste your scratch project link here.",
-  "step2_file" : "Step 2: Please upload your scratch project file that ends with",
+  "step2_file": "Step 2: Please upload your scratch project file that ends with",
   "step2subhint1": "Like following: (Share your project first)",
   "link_input_placeholder": "Paste your scratch project link here",
   "step2subhint2": "Next button won't show up if link looks not valid",
@@ -28,5 +28,7 @@
   "success_info": "File generated successfully!",
   "thanks_info": "Enjoy your converted Scratch code!",
   "select_file": "Select file",
-  "tutorial" : "Click on dog to start the tutorial."
+  "tutorial" : "Click on dog to start the tutorial.",
+  "error_in_generating": "Error in generating file!",
+  "success_in_generating": "File generated successfully!"
 }

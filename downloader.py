@@ -13,9 +13,16 @@ class File:
         self.file_name = self.make_filename_good(file_name)
 
     def make_filename_good(self, filename):
+        import re
         if filename:
-            filename = filename.replace(" ", "_")
             filename = filename.lower()
+            filename = re.sub(r'\s+', '_', filename)
+            filename = re.sub(r'[^a-zA-Z0-9_]', '', filename)
+
+            if len(filename) > 15:
+                filename = filename[:10]
+                if filename.endswith("_"):
+                    filename = filename[:-1]
         return filename
 
     def save(self, path):
@@ -132,7 +139,7 @@ class ScratchDownloader:
 
         service = Service(self.chrome_driver_path)
         driver = webdriver.Chrome(service=service, options=chrome_options)
-        driver.implicitly_wait(10)
+        driver.implicitly_wait(20)
 
         return driver
 
