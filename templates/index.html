@@ -7,12 +7,12 @@
     <title>Scratch To Python Converter</title>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/main.css') }}"
+      href="{{prefix}}{{ url_for('static', filename='css/main.css') }}"
     />
     <!-- icon -->
     <link
       rel="shortcut icon"
-      href="{{ url_for('static', filename='logo.png') }}"
+      href="{{prefix}}{{ url_for('static', filename='img/logo.png') }}"
     />
   </head>
 
@@ -20,12 +20,12 @@
     <div class="bg" style="display: none">
       <p style="color: white" id="load">{{ loading }}</p>
       <img
-        src="{{ url_for('static', filename='cat1.svg') }}"
+        src="{{prefix}}{{ url_for('static', filename='img/cat1.svg') }}"
         alt=""
         id="img1"
       />
       <img
-        src="{{ url_for('static', filename='cat2.svg') }}"
+        src="{{prefix}}{{ url_for('static', filename='img/cat2.svg') }}"
         alt=""
         id="img2"
       />
@@ -54,8 +54,8 @@
       </div>
     </div>
   </body>
-  <script src="{{ url_for('static', filename='js/ace.min.js') }}"></script>
+  <script src="{{prefix}}{{ url_for('static', filename='js/ace.min.js') }}"></script>
   <!-- <script src="static/js/socket.io.min.js"></script> -->
-  <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{prefix}}{{ url_for('static', filename='js/jquery.js') }}"></script>
+  <script src="{{prefix}}{{ url_for('static', filename='js/main.js') }}"></script>
 </html>
