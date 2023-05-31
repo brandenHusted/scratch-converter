@@ -63,6 +63,15 @@
   left: 20px;
 }
 
+.no-select {
+  cursor: pointer;
+  user-drag: none;
+  -moz-user-select: none; /* Firefox */
+  -webkit-user-drag: none; /* Safari */
+  -webkit-user-select: none; /* Safari */ /* Internet Explorer/Edge */
+  user-select: none;
+}
+
 .green {
   color: #0cff00;
 }
@@ -234,8 +243,30 @@ input:focus {
   display: flex;
   justify-content: space-evenly;
 }
+.left .tutorial {
+  display: center;
+}
 .left .thanks {
   display: flex;
+}
+.left .tutorialbtn {
+  width: 200px;
+  height: 35px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  background-color: rgb(81, 173, 204);
+  color: white;
+  border: none;
+  transition: all 0.2s ease-in-out;
+  bottom: -1400px;
+}
+.left .centered-text {
+  text-align: center;
 }
 .left .text-box {
   width: 70%;

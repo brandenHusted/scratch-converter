@@ -33,6 +33,7 @@ def get_translation():
         lang = lang if lang else "en"
     with open(f"static/langs/{lang}.json", 'r') as f:
         translation = json.load(f)
+        
     return translation, lang
 
 
@@ -54,7 +55,12 @@ def gen_rsp():
 def index():
     version = get_version()
     translation, lang = get_translation()
-    return render_template('index.html', **translation, lang=lang, version=version)
+    
+    if request.url.count("pystage") > 0:
+        prefix = "/pystage"
+    else:
+        prefix = ""
+    return render_template('index.html', **translation, lang=lang, version=version, prefix=prefix)
 
 
 @app.route('/generate/file', methods=['POST'])

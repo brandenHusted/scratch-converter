@@ -28,6 +28,7 @@
   "success_info": "文件转换成功！",
   "thanks_info": "享受转换后的 Scratch 代码吧！",
   "select_file": "选择文件",
+  "tutorial" : "点击狗开始教程",
   "error_in_generating": "生成文件失败！",
   "success_in_generating": "文件生成成功！"
 }

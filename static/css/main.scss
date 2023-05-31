@@ -15,6 +15,16 @@
   left: 20px;
 }
 
+.no-select {
+  cursor: pointer;
+  user-drag: none;
+  -moz-user-select: none; /* Firefox */
+  -webkit-user-drag: none; /* Safari */
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+
 .green {
   color: #0cff00;
 }
@@ -193,8 +203,34 @@ input {
     justify-content: space-evenly;
   }
 
+  .tutorial {
+    display: center;
+ }
+
   .thanks {
     display: flex;
+  }
+
+  .tutorialbtn {
+    width: 200px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+      user-select: none;
+    background-color: rgb(81, 173, 204);
+    color: white;
+    border: none;
+    transition: all 0.2s ease-in-out;
+    bottom: -1400px;
+    
+  }
+
+  .centered-text {
+    text-align: center;
   }
 
   .text-box {
@@ -203,7 +239,7 @@ input {
     border: 1px solid black;
     padding: 10px 20px;
     overflow: auto;
-
+  
     &::-webkit-scrollbar {
       width: 2px;
       height: 4px;
@@ -220,6 +256,7 @@ input {
     p {
       margin-bottom: 8px;
     }
+
   }
 }
 
