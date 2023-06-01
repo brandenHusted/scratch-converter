@@ -1,5 +1,5 @@
 import os
-import subprocess
+import subprocess as sp
 import zipfile
 from string import ascii_lowercase, digits
 from random import choice
@@ -26,13 +26,20 @@ def gen_key(prefix=""):
 
 
 def run_command(command):
-    process = subprocess.Popen(
-        command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    stdout, stderr = process.communicate()
-    stdout = stdout.decode('utf-8')
-    stderr = stderr.decode('utf-8')
-    return_code = process.returncode
-    return stdout, stderr, return_code
+    try:
+        output = sp.check_output(
+            command.split(" "), stderr=sp.STDOUT, timeout=2
+        )
+        output = output.decode("utf-8")
+        return True, output
+    except sp.CalledProcessError as e:
+        output = "Bad command executed"
+    except sp.TimeoutExpired:
+        output = "Timeout"
+    except Exception as e:
+        output = f"Unknown error: {e.args[1]}"
+
+    return False, output
 
 
 def get_code_from_key(config, key):
@@ -54,20 +61,20 @@ def create_zip_folder(folder_path, zip_path):
 
 
 def generate_zip(config, fn, convert_params: dict = {}):
-    _, _, code = run_command(
+    ok, output = run_command(
         f"cd {config['DF']} && mkdir '{fn}'")
-    if code != 0:
-        return False, None, None
+    if not ok:
+        return ok, output
 
     lang = check_lang(convert_params.get("lang"))
-    out, err, code = run_command(
+    ok, output = run_command(
         f"python -m pystage.convert.sb3 '{config['UF']}/{fn}.sb3' -l {lang} -d {config['DF']}/{fn}")
-    if code != 0:
-        return False, out, err
+    if not ok:
+        return ok, output
 
     create_zip_folder(f"{config['DF']}/{fn}",
                       f"{config['DF']}/{fn}.zip")
-    return True, out, err
+    return ok, output
 
 
 def delete_folder(path):

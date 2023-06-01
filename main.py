@@ -88,15 +88,14 @@ def upload_file():
     convert_params = {
         "lang": request.form.get("lang")
     }
-    rst = generate_zip(app.config, key, convert_params)
-    if not rst[0]:
+    ok, output = generate_zip(app.config, key, convert_params)
+    if not ok:
         rsp['code'] = 0
         rsp['msg'] = get_trans_from("error_in_generating")
-        rsp['out'] = rst[1]
-        rsp['err'] = rst[2]
+        rsp['err'] = output
         return jsonify(rsp)
     rsp['msg'] = get_trans_from("success_in_generating")
-    rsp['out'] = rst[1]
+    rsp['out'] = output
     rsp['key'] = key
     rsp['python_code'] = get_code_from_key(app.config, key)
     return jsonify(rsp)
@@ -124,16 +123,15 @@ def upload_url():
     convert_params = {
         "lang": request.get_json().get("lang")
     }
-    rst = generate_zip(app.config, key, convert_params)
-    if not rst[0]:
+    ok, output = generate_zip(app.config, key, convert_params)
+    if not ok:
         rsp['code'] = 0
         rsp['msg'] = get_trans_from("error_in_generating")
-        rsp['out'] = rst[1]
-        rsp['err'] = rst[2]
+        rsp['err'] = output
         return jsonify(rsp)
 
     rsp['msg'] = get_trans_from("success_in_generating")
-    rsp['out'] = rst[1]
+    rsp['out'] = output
     rsp['key'] = key
     rsp['python_code'] = get_code_from_key(app.config, key)
     return jsonify(rsp)
