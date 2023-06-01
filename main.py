@@ -1,8 +1,8 @@
 import os
 import logging
 import json
-from utils import gen_key, init_folder, generate_zip, delete_files, get_code_from_key
 from flask import Flask, request, render_template, send_file, jsonify
+from utils import gen_key, init_folder, generate_zip, delete_files, get_code_from_key
 from downloader import ScratchDownloader
 
 app = Flask(__name__)
@@ -21,7 +21,7 @@ werkzeug_logger.setLevel(logging.WARNING)
 
 
 def get_version():
-    with open("version", "r") as f:
+    with open("version", "r", encoding="utf-8") as f:
         return f"0.0.{f.read()}"
 
 
@@ -31,7 +31,7 @@ def get_translation():
     if lang not in available_langs:
         lang = request.accept_languages.best_match(available_langs)
         lang = lang if lang else "en"
-    with open(f"static/langs/{lang}.json", 'r') as f:
+    with open(f"static/langs/{lang}.json", 'r', encoding="utf-8") as f:
         translation = json.load(f)
 
     return translation, lang

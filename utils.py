@@ -3,6 +3,7 @@ import subprocess as sp
 import zipfile
 from string import ascii_lowercase, digits
 from random import choice
+import logging
 
 
 def init_folder(config: dict):
@@ -26,13 +27,16 @@ def gen_key(prefix=""):
 
 
 def run_command(command):
+    # hide the error message like ALSA lib pcm.c:2565:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+    command += " 2>/dev/null"
+    logging.debug(f"Running command: {command}")
     try:
         output = sp.check_output(
-            command.split(" "), stderr=sp.STDOUT, timeout=2
+            command, stderr=sp.STDOUT, timeout=10, shell=True
         )
         output = output.decode("utf-8")
         return True, output
-    except sp.CalledProcessError as e:
+    except sp.CalledProcessError:
         output = "Bad command executed"
     except sp.TimeoutExpired:
         output = "Timeout"
