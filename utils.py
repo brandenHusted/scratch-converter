@@ -24,7 +24,7 @@ def check_lang(lang):
 
 def gen_key(prefix=""):
     """return a random string of length 8"""
-    if len(prefix) > 15:
+    if isinstance(prefix, str) and len(prefix) > 15:
         prefix = prefix[:10]
         if prefix.endswith("_"):
             prefix = prefix[:-1]
