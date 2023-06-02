@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver import Chrome
 import os
 from time import time
+from logger import *
 
 
 class File:
@@ -27,8 +28,10 @@ class File:
 
     def save(self, path):
         if not self.content:
+            logger.debug("File is empty")
             return False
         with open(path, "wb") as f:
+            logger.debug(f"writing file into {path}")
             f.write(self.content)
         return True
 
@@ -41,7 +44,8 @@ class ScratchDownloader:
     ) -> None:
         cur_path = os.path.abspath(__file__)
         cur_dir = os.path.dirname(cur_path)
-        self.chrome_driver_path = os.path.join(cur_dir, "chromedriver")
+        self.chrome_driver_path = os.path.join(cur_dir, "public/chromedriver")
+        logger.debug(f"Chrome driver path: {self.chrome_driver_path}")
         self.show_browser = show_browser
         self.download_directory = download_directory
         self.link = ""
@@ -96,7 +100,6 @@ class ScratchDownloader:
             """
             TODO: might sending a warning email here
             """
-            print(e.args)
             return False
 
     def __check_url(self):
@@ -122,6 +125,8 @@ class ScratchDownloader:
         while (time() - s) < 5:
             try:
                 if len(os.listdir(f"{self.download_directory}/{self.fn}")) != 0:
+                    logger.debug(
+                        f"File {self.file_name} downloaded successfully from web")
                     return True
             except:
                 ...
@@ -139,7 +144,7 @@ class ScratchDownloader:
 
         service = Service(self.chrome_driver_path)
         driver = webdriver.Chrome(service=service, options=chrome_options)
-        driver.implicitly_wait(20)
+        driver.implicitly_wait(15)
 
         return driver
 

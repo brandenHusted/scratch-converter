@@ -3,4 +3,5 @@ venv/
 .vscode/
 generated_files/
 scratch_files/
+feature_tests/
 *.sb3

@@ -1,23 +1,14 @@
 import os
-import logging
+from logger import *
 import json
 from flask import Flask, request, render_template, send_file, jsonify
-from utils import gen_key, init_folder, generate_zip, delete_files, get_code_from_key
+from utils import gen_key, init_folder, generate_zip, get_code_from_key
 from downloader import ScratchDownloader
 
 app = Flask(__name__)
 app.secret_key = '3jfjdja5fgj5n32j4j3'
 app.config['UF'] = 'scratch_files'
 app.config['DF'] = 'generated_files'
-
-# DEBUG, INFO, WARNING, ERROR, CRITICAL
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger("my")
-
-# get flask built-in logger
-werkzeug_logger = logging.getLogger('werkzeug')
-# only log higher than warning level
-werkzeug_logger.setLevel(logging.WARNING)
 
 
 def get_version():
@@ -49,6 +40,24 @@ def gen_rsp():
         "out": "",
         "err": ""
     }
+
+
+def gen_zip_and_get_rsp(rsp, key):
+    convert_params = {
+        "lang": request.form.get("lang")
+    }
+    ok, output = generate_zip(app.config, key, convert_params)
+    if not ok:
+        rsp['code'] = 0
+        rsp['msg'] = get_trans_from("error_in_generating")
+        rsp['err'] = output
+        return jsonify(rsp)
+    rsp['msg'] = get_trans_from("success_in_generating")
+    rsp['out'] = output
+    rsp['key'] = key
+    rsp['python_code'] = get_code_from_key(app.config, key)
+
+    return rsp
 
 
 @app.route('/')
@@ -85,19 +94,7 @@ def upload_file():
     key = gen_key(request.form['fileName'])
     file.save(os.path.join(app.config['UF'], f"{key}.sb3"))
 
-    convert_params = {
-        "lang": request.form.get("lang")
-    }
-    ok, output = generate_zip(app.config, key, convert_params)
-    if not ok:
-        rsp['code'] = 0
-        rsp['msg'] = get_trans_from("error_in_generating")
-        rsp['err'] = output
-        return jsonify(rsp)
-    rsp['msg'] = get_trans_from("success_in_generating")
-    rsp['out'] = output
-    rsp['key'] = key
-    rsp['python_code'] = get_code_from_key(app.config, key)
+    rsp = gen_zip_and_get_rsp(rsp, key)
     return jsonify(rsp)
 
 
@@ -120,20 +117,7 @@ def upload_url():
         rsp['msg'] = "Invalid URL or internal error!"
         return jsonify(rsp)
 
-    convert_params = {
-        "lang": request.get_json().get("lang")
-    }
-    ok, output = generate_zip(app.config, key, convert_params)
-    if not ok:
-        rsp['code'] = 0
-        rsp['msg'] = get_trans_from("error_in_generating")
-        rsp['err'] = output
-        return jsonify(rsp)
-
-    rsp['msg'] = get_trans_from("success_in_generating")
-    rsp['out'] = output
-    rsp['key'] = key
-    rsp['python_code'] = get_code_from_key(app.config, key)
+    rsp = gen_zip_and_get_rsp(rsp, key)
     return jsonify(rsp)
 
 
@@ -142,10 +126,13 @@ def download_file(filename):
     # get the original name
     original_name = filename.rsplit("_", 1)[0] + ".zip"
     logger.debug(f"{filename}, {original_name}")
-    return send_file(os.path.join(app.config['DF'], f"{filename}.zip"), as_attachment=True, download_name=original_name)
+
+    path = os.path.join(app.config['DF'], f"{filename}.zip")
+    if not os.path.exists(path):
+        return "Generated file should be download within 10 minutes, otherwise it will be deleted."
+    return send_file(path, as_attachment=True, download_name=original_name)
 
 
 if __name__ == "__main__":
     init_folder(app.config)
-    delete_files(app.config)
-    app.run(debug=True, port=5000, host='0.0.0.0')
+    app.run(port=5000, host='0.0.0.0')
