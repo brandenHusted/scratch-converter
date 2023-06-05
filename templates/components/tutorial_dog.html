@@ -1,51 +1,88 @@
 <div class="steps tutorial_dog none">
+    <div class="centered-text">
+        <pre style="font-family: 'Times New Roman', Times, serif;">
+<b style="font-family: 'Times New Roman', Times, serif;"> Tutorial </b>
+            
+            
+This tutorial will help you learn how to convert any scratch project you make into the Python programming language.
 
-    <div class="btns">
-        <button class="tutorialbtn back" >{{ back }}</button>
-        <button class="tutorialbtn next"> {{ next }}</button>
-    </div>
-    <div class="centered-text"><pre>
 
-    <img src="{{prefix}}{{ url_for('static', filename='img/dot.png') }}" id = "ScratchForDot" alt="ScratchForDot" width="1350px" align="center"/>
-</pre>
-    <p><pre>
+This image above shows Dot the dog in his natural habitat which is...SCRATCH!
+
+            <div class = "btns">
+                <img src="{{prefix}}{{ url_for('static', filename='img/dot.png') }}" id = "ScratchForDot" alt="ScratchForDot" width="485px" height="402px" align="center"/>
+                <iframe src="https://scratch.mit.edu/projects/860099838/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+            </div>
+        </pre>
+        <p>
+            <pre style="font-family: 'Times New Roman', Times, serif;">
+
+Scratch is the world's largest free coding community for kids and is paving the way for the future of computer science.
+
+If it is your first time with scratch go to: 
+        <a href="http://scratch.mit.edu" target="_blank">
+http://scratch.mit.edu</a>
+
+
+If you are new to scratch click <b>Join Scratch</b>
+
+else click <b>Sign in</b>
+
+
+Now you can make your account and click create to create your project!
+
+You can start with the example above if you do not know where to start.
+
+
+
+This next image is part of this project converted into python.
+            </pre>
+        </p>
+        <img src="{{prefix}}{{ url_for('static', filename='img/dotPython.png') }}" id = "PythonForDot" alt="PythonForDot" width="1050px" align="center"/>
+        <p>
+            <pre style="font-family: 'Times New Roman', Times, serif;">
+                
+                
+Can you find when the dog moves 10 steps in the python code and the scratch code?
+                
+                
+               
+Here is an easy example of the conversion process!
+
+
+Self in the code below refers to the sprite we used in our program in this case our dog named Dot is our sprite.
+  
         
+        <div class = "btns"> 
+            <img src="{{prefix}}{{ url_for('static', filename='img/dot.png') }}" id = "ScratchForDot" alt="ScratchForDot" width="300px" height="300px" align="center"/> 
+            <img src="{{prefix}}{{ url_for('static', filename='img/arrow.png') }}" id = "arrow" alt="arrow" width="300px" height="200px" align="center"/>
+            <img src="{{prefix}}{{ url_for('static', filename='img/dotPython.png') }}" id = "PythonForDot" alt="PythonForDot" width="700px" height="300px" align="center"/> 
+        </div>
+
+
+The enviroment is created in the code below so our program can include sounds, images, variables, costumes and a stage or a window so you can see your program.
+
+
+Can you find the line of code where pystage imports the stage and sprite?
+
+
+What is the number for center_y in 'dot_c'? 
+
+<small>Hint: dot_c is a custume used for when the dog is moving.</small>
+
+        <img src="{{prefix}}{{ url_for('static', filename='img/upperPythonCode.png') }}" id = "PythonForDot" alt="PythonForDot" width="1050px" align="center"/>
+
+
+This program does not run without this last line of code at the end that calls the function when_program_starts_1 and starts the stage.
+
         
-   
-    This image above shows Dot the dog in his natural habitat which is...SCRATCH!
-    
+        <img src="{{prefix}}{{ url_for('static', filename='img/lowerPythonCode.png') }}" id = "PythonForDot" alt="PythonForDot" width="1050px" align="center"/>
 
-    
-    Scratch is the world's largest free coding community for kids and is paving the way for the future of computer science.
+I think you are learning!
 
-
-    
-    This tutorial will help you learn how to convert any scratch project you make into the python programming language.
-
-
-    
-    This next image is part of this project converted into python.
-
-</p>
-</pre>
-    <img src="{{prefix}}{{ url_for('static', filename='img/dotPython.png') }}" id = "PythonForDot" alt="PythonForDot" width="1050px" align="center"/>
-    <p><pre>
-    
-
-    
-    
-    Can you find when timer > 10 block is in the python code and the scratch code?
-
-    
-    
-    
-    I think you are learning! Can you find when the program starts the forest background appears in the python code?
-
-
-    
-    
-    To run this conversion in the terminal the command is <b>python -m pystage.convert.sb3 'SB3 File' -l en -d 'DIRECTORY'</b>
-    </p>
-</pre> 
-</div>       
+             </pre>
+        </p>
+    </div> 
+    <button class="tutorialbtn back" >{{ back }}</button>
+    <button class="tutorialbtn next" >{{ next }}</button>
 </div>

@@ -92,6 +92,10 @@
   }
 }
 
+.scratch {
+  left: 0;
+  bottom: 20px;
+}
 .steps {
   position: relative;
   min-width: 700px;
@@ -225,7 +229,7 @@ input {
     color: white;
     border: none;
     transition: all 0.2s ease-in-out;
-    bottom: -1400px;
+    top: 0px;
     
   }
 
