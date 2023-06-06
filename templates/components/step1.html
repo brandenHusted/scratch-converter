@@ -11,14 +11,42 @@
     <div class="tutorial">
       <p>{{tutorial}}</p>
     </div>
-    <div class="tutorialDog">
-      <img
-        src="{{prefix}}{{ url_for('static', filename='img/dog2.png') }}"
-        id="tutorial1"
-        alt="tutorial1"
-        width="200px"
-        class="no-select"
-      />
+    <div class="btns">
+      <div class="tutorialDog">
+        <img
+          src="{{prefix}}{{ url_for('static', filename='img/dog2.png') }}"
+          id="tutorial1"
+          alt="tutorial1"
+          width="200px"
+          class="no-select"
+        />
+      </div>
+    
+      <div class="tutorialCat">
+        <img
+          src="{{prefix}}{{ url_for('static', filename='img/cat.png') }}"
+          id="tutorial2"
+          alt="tutorial2"
+          width="100px"
+          
+          class="no-select"
+        />
+      </div>
+    
+      <div class="tutorialSquirrel">
+        <img
+         src="{{prefix}}{{ url_for('static', filename='img/squirrel.png') }}"
+          id="tutorial3"
+          alt="tutorial3"
+          width="200px"
+          class="no-select"
+       />
+      </div>
+    </div>
+    <div class="btns">
+        <p>{{ beginner }}</p>
+        <p>{{ mediocre }}</p>
+        <p>{{ master }}</p>
     </div>
   </div>
 </div>

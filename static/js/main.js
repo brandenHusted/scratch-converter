@@ -83,9 +83,11 @@ const step2_1 = $(".step2.link");
 const step2_2 = $(".step2.file");
 const step3 = $(".step3");
 const step4 = $(".step4");
-const tutorial = $(".tutorial_dog");
+const tutorial_easy = $(".tutorial_dog");
 const tutorial_dog_part2 = $(".tutorial_dog_part2");
 const tutorial_dog_part3 = $(".tutorial_dog_part3");
+const tutorial_medium = $(".tutorial_cat");
+const tutorial_hard = $(".tutorial_squirrel");
 let jumpThrough = "";
 
 $("#languageOptions").val($("#languageOptions").attr("data-lang"));
@@ -109,30 +111,36 @@ throughFile.on("click", () => {
   step2_2.show();
 });
 
-// click event to tutorial
+/////////////////////////////////////////////////////////
+////////              Beginner tutorial            ////////
+/////////////////////////////////////////////////////////
+
+
+// click event to tutorial 
 $("#tutorial1").on("click", () => {
   console.log("clicked");
   step1.hide();
-  tutorial.show();
+  tutorial_easy.show();
   tutorial_dog_part2.hide();
 });
 // pages on tutorial for back and next
 const backToStep1FromTutorial = $(".tutorial_dog .back");
 backToStep1FromTutorial.on("click", () => {
-  tutorial.hide();
+  tutorial_easy.hide();
   step1.show();
+  
 });
 
 const nextToPage2OfTutorial = $(".tutorial_dog .next");
 nextToPage2OfTutorial.on("click", () => {
-  tutorial.hide();
+  tutorial_easy.hide();
   tutorial_dog_part2.show();
 });
 
 const backToPage1OfTutorial = $(".tutorial_dog_part2 .back");
 backToPage1OfTutorial.on("click", () => {
   tutorial_dog_part2.hide();
-  tutorial.show();
+  tutorial_easy.show();
 });
 
 const nextToPage3OfTutorial = $(".tutorial_dog_part2 .next");
@@ -151,6 +159,45 @@ const EndTutorial = $(".tutorial_dog_part3 .next");
 EndTutorial.on("click", () => {
   tutorial_dog_part3.hide();
   step1.show();
+});
+
+
+/////////////////////////////////////////////////////////
+////////              Mediocre tutorial            ////////
+/////////////////////////////////////////////////////////
+
+// click event to tutorial 
+$("#tutorial2").on("click", () => {
+  console.log("clicked");
+  step1.hide();
+  tutorial_medium.show();
+});
+
+// pages on tutorial for back and next
+const backToStep1FromCatTutorial = $(".tutorial_cat .back");
+backToStep1FromCatTutorial.on("click", () => {
+  tutorial_medium.hide();
+  step1.show();
+  
+});
+
+
+/////////////////////////////////////////////////////////
+////////              Master tutorial            ////////
+/////////////////////////////////////////////////////////
+
+// click event to tutorial 
+$("#tutorial3").on("click", () => {
+  console.log("clicked");
+  step1.hide();
+  tutorial_hard.show();
+});
+
+const backToStep1FromSquirrelTutorial = $(".tutorial_squirrel .back");
+backToStep1FromSquirrelTutorial.on("click", () => {
+  tutorial_hard.hide();
+  step1.show();
+  
 });
 
 /////////////////////////////////////////////////////////

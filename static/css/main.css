@@ -251,6 +251,15 @@ input:focus {
 .left .tutorial {
   display: center;
 }
+.left .tutorialCat {
+  margin-left: 20px;
+}
+.left .tutorialDog {
+  margin-left: 40px;
+}
+.left .tutorialSquirrel {
+  margin-right: 30px;
+}
 .left .thanks {
   display: flex;
 }

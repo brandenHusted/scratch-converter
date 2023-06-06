@@ -1,13 +1,13 @@
 <div class="steps tutorial_dog none">
     <div class="centered-text">
         <pre style="font-family: 'Times New Roman', Times, serif;">
-<b style="font-family: 'Times New Roman', Times, serif;"> Tutorial </b>
+<b style="font-family: 'Times New Roman', Times, serif;"> Beginner Tutorial </b>
             
             
 This tutorial will help you learn how to convert any scratch project you make into the Python programming language.
 
 
-This image above shows Dot the dog in his natural habitat which is...SCRATCH!
+This image below shows Dot the dog in his natural habitat which is...SCRATCH!
 
             <div class = "btns">
                 <img src="{{prefix}}{{ url_for('static', filename='img/dot.png') }}" id = "ScratchForDot" alt="ScratchForDot" width="485px" height="402px" align="center"/>
@@ -24,16 +24,15 @@ If it is your first time with scratch go to:
 http://scratch.mit.edu</a>
 
 
-If you are new to scratch click <b>Join Scratch</b>
-
-else click <b>Sign in</b>
+If you are new to scratch click <b>Join Scratch</b> else click <b>Sign in</b>.
 
 
 Now you can make your account and click create to create your project!
 
-You can start with the example above if you do not know where to start.
+<small>You can start with the example above if you do not know where to start.</small>
 
 
+<b> Learning about how the conversion works </b>
 
 This next image is part of this project converted into python.
             </pre>
@@ -49,9 +48,6 @@ Can you find when the dog moves 10 steps in the python code and the scratch code
                
 Here is an easy example of the conversion process!
 
-
-Self in the code below refers to the sprite we used in our program in this case our dog named Dot is our sprite.
-  
         
         <div class = "btns"> 
             <img src="{{prefix}}{{ url_for('static', filename='img/dot.png') }}" id = "ScratchForDot" alt="ScratchForDot" width="300px" height="300px" align="center"/> 
@@ -59,8 +55,28 @@ Self in the code below refers to the sprite we used in our program in this case 
             <img src="{{prefix}}{{ url_for('static', filename='img/dotPython.png') }}" id = "PythonForDot" alt="PythonForDot" width="700px" height="300px" align="center"/> 
         </div>
 
+<b> Learning Python code </b>
 
-The enviroment is created in the code below so our program can include sounds, images, variables, costumes and a stage or a window so you can see your program.
+Self in the code below refers to the sprite we used in our program in this case our dog named Dot is our sprite.
+
+
+Self represents the instance of a class and in this case it represents our Dog named Dot at its current state.
+
+
+Self is then used to move the dog 10 steps and make him bark.
+
+ 
+<p style="color: red;"> def</p> 
+defines a function that starts when the green flag is clicked so the code can run.
+
+
+        <div class = "btns">
+            <img src="{{prefix}}{{ url_for('static', filename='img/downArrow.png') }}" id = "downArrow" alt="downArrow" width="400px" height="300px" align="center"/>
+
+The PyStage enviroment is created in the code below 
+
+
+This makes our program include sounds, images, variables, costumes and a stage.
 
 
 Can you find the line of code where pystage imports the stage and sprite?
@@ -68,7 +84,9 @@ Can you find the line of code where pystage imports the stage and sprite?
 
 What is the number for center_y in 'dot_c'? 
 
-<small>Hint: dot_c is a custume used for when the dog is moving.</small>
+Hint: Dot_c is a costume for dot that moves his legs when he moves.
+
+        </div>
 
         <img src="{{prefix}}{{ url_for('static', filename='img/upperPythonCode.png') }}" id = "PythonForDot" alt="PythonForDot" width="1050px" align="center"/>
 
@@ -85,4 +103,5 @@ I think you are learning!
     </div> 
     <button class="tutorialbtn back" >{{ back }}</button>
     <button class="tutorialbtn next" >{{ next }}</button>
+            
 </div>

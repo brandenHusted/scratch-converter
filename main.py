@@ -65,7 +65,7 @@ def index():
     version = get_version()
     translation, lang = get_translation()
 
-    if request.headers.get("X-Forwarded-Host").count("calvin") > 0:
+    if request.headers.get("X-Forwarded-Host", "").count("calvin") > 0:
         prefix = "/pystage"
     else:
         prefix = ""
@@ -90,7 +90,7 @@ def upload_file():
         return jsonify(rsp)
 
     file = request.files['file']
-    logger.debug(request.form['fileName'])
+    
     key = gen_key(request.form['fileName'])
     file.save(os.path.join(app.config['UF'], f"{key}.sb3"))
 
@@ -135,4 +135,4 @@ def download_file(filename):
 
 if __name__ == "__main__":
     init_folder(app.config)
-    app.run(port=5000, host='0.0.0.0')
+    app.run(debug=True, port=5000, host='0.0.0.0')

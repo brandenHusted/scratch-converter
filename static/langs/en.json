@@ -28,7 +28,10 @@
   "success_info": "File generated successfully!",
   "thanks_info": "Enjoy your converted Scratch code!",
   "select_file": "Select file",
-  "tutorial" : "Click on dog to start the tutorial.",
+  "tutorial" : "Click on an image to start the tutorial.",
   "error_in_generating": "Error in generating file!",
-  "success_in_generating": "File generated successfully!"
+  "success_in_generating": "File generated successfully!",
+  "beginner": "Beginner",
+  "mediocre": "Mediocre",
+  "master": "Master"
 }
