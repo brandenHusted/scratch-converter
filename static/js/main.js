@@ -84,11 +84,14 @@ const step2_2 = $(".step2.file");
 const step3 = $(".step3");
 const step4 = $(".step4");
 const tutorial_easy = $(".tutorial_dog");
+const tutorial_dog_code = $(".tutorial_dog_code");
 const tutorial_dog_part2 = $(".tutorial_dog_part2");
 const tutorial_dog_part3 = $(".tutorial_dog_part3");
 const tutorial_medium = $(".tutorial_cat");
-const tutorial_cat_part2 = $(".tutorial_cat_part2")
+const tutorial_cat_part2 = $(".tutorial_cat_part2");
 const tutorial_hard = $(".tutorial_squirrel");
+const tutorial_squirrel_part2 = $(".tutorial_squirrel_part2");
+const tutorial_squirrel_part3 = $(".tutorial_squirrel_part3");
 let jumpThrough = "";
 
 $("#languageOptions").val($("#languageOptions").attr("data-lang"));
@@ -123,6 +126,19 @@ $("#tutorial1").on("click", () => {
   step1.hide();
   tutorial_easy.show();
   tutorial_dog_part2.hide();
+});
+
+$("#ScratchCodeForDot").on("click", () => {
+  console.log("clicked");
+  tutorial_easy.hide();
+  tutorial_dog_code.show();
+});
+// back button for how to make scratch project
+const back = $(".tutorial_dog_code .back");
+back.on("click", () => {
+  tutorial_dog_code.hide();
+  tutorial_easy.show();
+  
 });
 // pages on tutorial for back and next
 const backToStep1FromTutorial = $(".tutorial_dog .back");
@@ -210,6 +226,34 @@ const backToStep1FromSquirrelTutorial = $(".tutorial_squirrel .back");
 backToStep1FromSquirrelTutorial.on("click", () => {
   tutorial_hard.hide();
   step1.show();
+  
+});
+
+const nextToPart2ToSquirrelTutorial = $(".tutorial_squirrel .next");
+nextToPart2ToSquirrelTutorial.on("click", () => {
+  tutorial_hard.hide();
+  tutorial_squirrel_part2.show();
+  
+});
+
+const backToPart1OfSquirrelTutorial = $(".tutorial_squirrel_part2 .back");
+backToPart1OfSquirrelTutorial.on("click", () => {
+  tutorial_squirrel_part2.hide();
+  tutorial_hard.show();
+  
+});
+
+const nextToPart3OfSquirrelTutorial = $(".tutorial_squirrel_part2 .next");
+nextToPart3OfSquirrelTutorial.on("click", () => {
+  tutorial_squirrel_part2.hide();
+  tutorial_squirrel_part3.show();
+  
+});
+
+const backToPart2OfSquirrelTutorial = $(".tutorial_squirrel_part3 .back");
+backToPart2OfSquirrelTutorial.on("click", () => {
+  tutorial_squirrel_part3.hide();
+  tutorial_squirrel_part2.show();
   
 });
 
