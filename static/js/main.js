@@ -87,6 +87,7 @@ const tutorial_easy = $(".tutorial_dog");
 const tutorial_dog_part2 = $(".tutorial_dog_part2");
 const tutorial_dog_part3 = $(".tutorial_dog_part3");
 const tutorial_medium = $(".tutorial_cat");
+const tutorial_cat_part2 = $(".tutorial_cat_part2")
 const tutorial_hard = $(".tutorial_squirrel");
 let jumpThrough = "";
 
@@ -181,7 +182,19 @@ backToStep1FromCatTutorial.on("click", () => {
   
 });
 
+const nextToPart2InCatTutorial = $(".tutorial_cat .next");
+nextToPart2InCatTutorial.on("click", () => {
+  tutorial_medium.hide();
+  tutorial_cat_part2.show();
+  
+});
 
+const backToPart1InCatTutorial = $(".tutorial_cat_part2 .back");
+backToPart1InCatTutorial.on("click", () => {
+  tutorial_cat_part2.hide();
+  tutorial_medium.show();
+  
+});
 /////////////////////////////////////////////////////////
 ////////              Master tutorial            ////////
 /////////////////////////////////////////////////////////
