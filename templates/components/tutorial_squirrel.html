@@ -28,13 +28,85 @@ These donuts will spawn when you start the game.
                     <iframe src="https://scratch.mit.edu/projects/862149370/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
                 </div>
             </div>   
- Can you think of a way you would improve this game to make it better for a user playing the game?   
+ <b>Can you think of a way you would improve this game to make it better for a user playing the game?</b>
+ 
+ 
+ The three sprites in this project are the squirrel, donuts and squirrel2.
+ 
+ 
+ We will go through each sprite one by one.
+
+
+ Here is the code for the squirrel sprite.
 
  <img src="{{prefix}}{{ url_for('static', filename='img/squirrelCode1.png') }}" id = "requirements" alt="requirements" width="600px" />
+
+ 
+ This code block makes the squirrel win after he eats over 100 donuts.
+ 
+ 
+ <b>When any key is pressed</b> if donuts is greater then 100 we loop the following forever.
+
+
+We set the size to 1000%, the backdrop switches to stars and all other commands are stopped.
+
+
+This code makes the squirrel lose after 30 seconds of play time.
+
+
+<b>When any key is pressed</b> if donuts is less then 100 then we wait until the timer is greater then 30 seconds.
+
+
+We then switch backdrop to stars and stop all other commands.
+
+
+<b>When any key is pressed</b> if the squirrel is touching a Donut then we change the Donuts score by 1
+
+
+If the Donuts score is greater then 20 then shrink the squirrel to 30% the size and say a message.
+
+
  <img src="{{prefix}}{{ url_for('static', filename='img/squirrelCode2.png') }}" id = "requirements" alt="requirements" width="600px" />
+
+
+ <b>When green flag is clicked</b> reset Donuts score to 0, reset the size of the squirrel and the backdrop.
+
+
+We say a message for 5 seconds and then say another message explaining the controls of the game.
+
+
+The message explaining the controls stops when the score is over 20 because we then say our hard mode message in the first code image above.
+
+Find this message: Hard Mode! I need 100 donuts!
+
+
+<b>When backdrop switches to stars</b> if the Donuts score is less then 100 then say
+
+
+You Lose, I'm Hungry!
+
+
+Else if Donuts is greater then 100 then say
+
+
+Yum! I am Done!
+
+
+If Donuts equals 100 then in our code this mean you still lose the game and no message is displayed.
+
+
+<b>What message would you put in the code if the squirrels Donuts equals 100?</b>
+
+
  <img src="{{prefix}}{{ url_for('static', filename='img/squirrelCode3.png') }}" id = "requirements" alt="requirements" width="600px" />
  
- 
+ This code executes the controls for the squirrel2.
+
+
+ If you press w you go up and if you press s you go down.
+
+
+ If you press a you go left and if you press d you go right.
         </pre>
 
 

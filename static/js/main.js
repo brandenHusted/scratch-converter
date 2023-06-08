@@ -83,15 +83,21 @@ const step2_1 = $(".step2.link");
 const step2_2 = $(".step2.file");
 const step3 = $(".step3");
 const step4 = $(".step4");
+// tutorial steps
 const tutorial_easy = $(".tutorial_dog");
 const tutorial_dog_code = $(".tutorial_dog_code");
 const tutorial_dog_part2 = $(".tutorial_dog_part2");
 const tutorial_dog_part3 = $(".tutorial_dog_part3");
 const tutorial_medium = $(".tutorial_cat");
 const tutorial_cat_part2 = $(".tutorial_cat_part2");
+const tutorial_cat_part3 = $(".tutorial_cat_part3");
+const tutorial_cat_part4 = $(".tutorial_cat_part4");
 const tutorial_hard = $(".tutorial_squirrel");
 const tutorial_squirrel_part2 = $(".tutorial_squirrel_part2");
 const tutorial_squirrel_part3 = $(".tutorial_squirrel_part3");
+const tutorial_squirrel_part4 = $(".tutorial_squirrel_part4");
+const tutorial_squirrel_part5 = $(".tutorial_squirrel_part5");
+const tutorial_squirrel_part6 = $(".tutorial_squirrel_part6");
 let jumpThrough = "";
 
 $("#languageOptions").val($("#languageOptions").attr("data-lang"));
@@ -211,6 +217,42 @@ backToPart1InCatTutorial.on("click", () => {
   tutorial_medium.show();
   
 });
+
+const nextToPart3InCatTutorial = $(".tutorial_cat_part2 .next");
+nextToPart3InCatTutorial.on("click", () => {
+  tutorial_cat_part2.hide();
+  tutorial_cat_part3.show();
+  
+});
+
+const backToPart2InCatTutorial = $(".tutorial_cat_part3 .back");
+backToPart2InCatTutorial.on("click", () => {
+  tutorial_cat_part3.hide();
+  tutorial_cat_part2.show();
+  
+});
+
+const nextToPart4InCatTutorial = $(".tutorial_cat_part3 .next");
+nextToPart4InCatTutorial.on("click", () => {
+  tutorial_cat_part3.hide();
+  tutorial_cat_part4.show();
+  
+});
+
+const backToPart3InCatTutorial = $(".tutorial_cat_part4 .back");
+backToPart3InCatTutorial.on("click", () => {
+  tutorial_cat_part4.hide();
+  tutorial_cat_part3.show();
+  
+});
+
+const endTutorial2 = $(".tutorial_cat_part4 .next");
+endTutorial2.on("click", () => {
+  tutorial_cat_part4.hide();
+  step1.show();
+  
+});
+
 /////////////////////////////////////////////////////////
 ////////              Master tutorial            ////////
 /////////////////////////////////////////////////////////
@@ -255,6 +297,66 @@ backToPart2OfSquirrelTutorial.on("click", () => {
   tutorial_squirrel_part3.hide();
   tutorial_squirrel_part2.show();
   
+});
+
+const nextToPart4OfSquirrelTutorial = $(".tutorial_squirrel_part3 .next");
+nextToPart4OfSquirrelTutorial.on("click", () => {
+  tutorial_squirrel_part3.hide();
+  tutorial_squirrel_part4.show();
+  
+});
+
+const backToPart3OfSquirrelTutorial = $(".tutorial_squirrel_part4 .back");
+backToPart3OfSquirrelTutorial.on("click", () => {
+  tutorial_squirrel_part4.hide();
+  tutorial_squirrel_part3.show();
+  
+});
+
+$("#codeSample2").on("click", () => {
+  alert("correct! This line of python code starts when green flag is clicked.");
+  
+});
+
+$("#go").on("click", (e) => {
+  const {offsetX, offsetY} = e;
+  if (((70 < offsetX) && (offsetX < 310)) && ((290 < offsetY) && (offsetY < 420))) {
+    alert("correct! This line of python code is broadcasting go!");
+  }
+})
+
+const nextToPart5OfSquirrelTutorial = $(".tutorial_squirrel_part4 .next");
+nextToPart5OfSquirrelTutorial.on("click", () => {
+  tutorial_squirrel_part4.hide();
+  tutorial_squirrel_part5.show();
+  
+});
+
+const backToPart4OfSquirrelTutorial = $(".tutorial_squirrel_part5 .back");
+backToPart4OfSquirrelTutorial.on("click", () => {
+  tutorial_squirrel_part5.hide();
+  tutorial_squirrel_part4.show();
+  
+});
+
+const nextToPart6OfSquirrelTutorial = $(".tutorial_squirrel_part5 .next");
+nextToPart6OfSquirrelTutorial.on("click", () => {
+  tutorial_squirrel_part5.hide();
+  tutorial_squirrel_part6.show();
+  
+});
+
+const backToPart5OfSquirrelTutorial = $(".tutorial_squirrel_part6 .back");
+backToPart5OfSquirrelTutorial.on("click", () => {
+  tutorial_squirrel_part6.hide();
+  tutorial_squirrel_part5.show();
+  
+});
+
+const EndTutorial3 = $(".tutorial_squirrel_part6 .next");
+EndTutorial3.on("click", () => {
+  tutorial_squirrel_part6.hide();
+  step1.show();
 });
 
 /////////////////////////////////////////////////////////

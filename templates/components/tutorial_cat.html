@@ -3,7 +3,7 @@
         <pre style="font-family: 'Times New Roman', Times, serif;">
 <b style="font-family: 'Times New Roman', Times, serif;"> Mediocre Tutorial </b>
 
-This tutorial will take you through how to make a simple scratch game with a goal at the end
+This tutorial will take you through how to make a simple scratch game with a goal at the end!
     <div class ="btns">
         <img src="{{prefix}}{{ url_for('static', filename='img/walkingCatCode.png') }}" id = "requirements" alt="requirements" width="600px" />
         <iframe src="https://scratch.mit.edu/projects/862101795/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
@@ -20,9 +20,45 @@ For now lets go over each individual block of code and see what it does.
 
 <img src="{{prefix}}{{ url_for('static', filename='img/catCode1.png') }}" id = "requirements" alt="requirements" width="600px" />
 
+
+This block of code is executed when the green flag is clicked and it shows a message and resets the timer and score.
+
+
+Click on events and drag when green flag is clicked to the script area.
+
+
+Click on looks and drag the think block to the script area and write a message.
+
+
+Click on sensing and drag reset timer to the script area.
+
+
+Click on variables and drag set your_score to 0 to the script area.
+
+
+Now I challenge you to find the rest of the blocks on your own!
+
 <img src="{{prefix}}{{ url_for('static', filename='img/catCode2.png') }}" id = "requirements" alt="requirements" width="600px" />
 
+
+This block of code is executed when the d key is pressed when you move right in the game.
+
+
+If you are touching the Cheesy Puffs then a message pops up saying Yum!
+
+
+You score then changes by 1 as long as you are touching the Cheesy Puffs
+
+
+See how many points you can get before it disappears!
+
 <img src="{{prefix}}{{ url_for('static', filename='img/catCode3.png') }}" id = "requirements" alt="requirements" width="600px" />
+
+
+This code changes x by 10 or -10 based on if a or d is pressed on your keyboard.
+
+
+A new costume is displayed for the cat to make the cat look like it is walking.
 
         </pre>
 <button class="tutorialbtn back" >{{ back }}</button>

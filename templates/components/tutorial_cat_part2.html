@@ -4,10 +4,34 @@
             <b style="font-family: 'Times New Roman', Times, serif;"> Mediocre Tutorial </b>
     
 
-This code is used when the cheeto touches Sprite1. (the cat)
+This code is used when the Cheesy Puffs touches Sprite1. (the cat)
 
 
     <img src="{{prefix}}{{ url_for('static', filename='img/Cheeto.png') }}" id = "requirements" alt="requirements" width="600px" />
+
+
+<b>When green flag is clicked</b> the Cheesy Puffs goes to the cordinates x: 150 and y: -130 in our game.
+
+
+The size of the Cheesy Puffs is set to 100% to reset any size changes from past games.
+
+
+<b>When d key is pressed</b> if the Cheesy Puffs are touching the cat then we wait 1 second.
+
+
+In this one second try and get as many points as you can!
+
+
+Then the size is set to 0% although this does not make the Cheesy Puffs completely dissapear off the screen.
+
+
+We set the x and y cordinates to -1000 so you can not see the Cheesy Puffs on the screen.
+
+
+When you press the green flag the x and y cordinates are reset to their original position.
+
+
+
         </pre>
         <button class="tutorialbtn back" >{{ back }}</button>
         <button class="tutorialbtn next" >{{ next }}</button>
