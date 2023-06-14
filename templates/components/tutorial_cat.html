@@ -1,64 +1,65 @@
 <div class="steps tutorial_cat none">
     <div class="centered-text">
         <pre style="font-family: 'Times New Roman', Times, serif;">
-<b style="font-family: 'Times New Roman', Times, serif;"> Mediocre Tutorial </b>
+<b style="font-family: 'Times New Roman', Times, serif;"> {{ mediocreTutorial }} </b>
 
-This tutorial will take you through how to make a simple scratch game with a goal at the end!
+{{ mediumTutorialSentence1 }}
     <div class ="btns">
-        <img src="{{prefix}}{{ url_for('static', filename='img/walkingCatCode.png') }}" id = "requirements" alt="requirements" width="600px" />
+        <img src="{{prefix}}{{ url_for('static', filename='img/walkingCatCode.png') }}" id = "walkingCatCode" alt="walkingCatCode" width="600px" />
         <iframe src="https://scratch.mit.edu/projects/862101795/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
     </div>
 
-There is one line of code missing in the image above from the game, can you guess what it is?
+{{ mediumTutorialSentence2 }}
 
 
-We will tell you the answer at the end of this tutorial.
+{{ mediumTutorialSentence3 }}
 
 
-For now lets go over each individual block of code and see what it does.
+{{ mediumTutorialSentence4 }}
 
 
-<img src="{{prefix}}{{ url_for('static', filename='img/catCode1.png') }}" id = "requirements" alt="requirements" width="600px" />
+<img src="{{prefix}}{{ url_for('static', filename='img/catCode1.png') }}" id = "catCode1" alt="catCode1" width="600px" />
 
 
-This block of code is executed when the green flag is clicked and it shows a message and resets the timer and score.
+{{ mediumTutorialSentence5 }}
 
 
-Click on events and drag when green flag is clicked to the script area.
+{{ mediumTutorialSentence6 }}
 
 
-Click on looks and drag the think block to the script area and write a message.
+{{ mediumTutorialSentence7 }}
 
 
-Click on sensing and drag reset timer to the script area.
+{{ mediumTutorialSentence8 }}
 
 
-Click on variables and drag set your_score to 0 to the script area.
+{{ mediumTutorialSentence9 }}
 
 
-Now I challenge you to find the rest of the blocks on your own!
+{{ mediumTutorialSentence10 }}
 
-<img src="{{prefix}}{{ url_for('static', filename='img/catCode2.png') }}" id = "requirements" alt="requirements" width="600px" />
-
-
-This block of code is executed when the d key is pressed when you move right in the game.
+<img src="{{prefix}}{{ url_for('static', filename='img/catCode2.png') }}" id = "catCode2" alt="catCode2" width="600px" />
 
 
-If you are touching the Cheesy Puffs then a message pops up saying Yum!
+{{ mediumTutorialSentence11 }}
 
 
-You score then changes by 1 as long as you are touching the Cheesy Puffs
+{{ mediumTutorialSentence12 }}
 
 
-See how many points you can get before it disappears!
-
-<img src="{{prefix}}{{ url_for('static', filename='img/catCode3.png') }}" id = "requirements" alt="requirements" width="600px" />
+{{ mediumTutorialSentence13 }}
 
 
-This code changes x by 10 or -10 based on if a or d is pressed on your keyboard.
+{{ mediumTutorialSentence14 }}
+
+<img src="{{prefix}}{{ url_for('static', filename='img/catCode3.png') }}" id = "catCode3" alt="catCode3" width="600px" />
 
 
-A new costume is displayed for the cat to make the cat look like it is walking.
+{{ mediumTutorialSentence15 }}
+
+
+{{ mediumTutorialSentence16 }}
+
 
         </pre>
 <button class="tutorialbtn back" >{{ back }}</button>

@@ -1,46 +1,53 @@
 <div class="steps tutorial_squirrel_part5 none">
     <div class="centered-text">
         <pre style="font-family: 'Times New Roman', Times, serif;">
-            <b style="font-family: 'Times New Roman', Times, serif;"> Master Tutorial </b> 
+            <b style="font-family: 'Times New Roman', Times, serif;"> {{ masterTutorial }} </b> 
 
 
-You can also draw on your sprite to make your character anything you want it to be.
+{{ hardTutorialSentence78 }}
 
 
-Click costumes in the scratch editor and click fill to choose your color!
+{{ hardTutorialSentence79 }}
 
 
-You can draw, create a line, circle, square, add text, fill an area with color, erase and select your sprite.
+{{ hardTutorialSentence80 }}
 
-<img src="{{prefix}}{{ url_for('static', filename='img/paint.png') }}" id = "requirements" alt="requirements" width="600px" />
-
-
-Now your sprite will look like what you have drawn in game.
+<img src="{{prefix}}{{ url_for('static', filename='img/paint.png') }}" id = "paint" alt="paint" width="600px" />
 
 
-<b>Errors that can happen when generating</b>
-
-<p style = 'color: red;'>Error in generating file!</p>This means that the website could not load the content for your project.
+{{ hardTutorialSentence81 }}
 
 
-<p style = 'color: red;'>Invalid URL or internal error!</p> URL is incorrect or scratch is having server issues while you are generating your project.
+{{ easyVideoSentence }}
+
+<a href="https://www.youtube.com/watch?v=Bo3kUF9k0Vg" target="_blank">
+https://scratch.mit.edu/projects/845126622/
+</a>
 
 
-<p style = 'color: red;'>Unknown Error</p> Most likely there is something not implemented yet that you used in your project. 
+<b>{{ easyTutorialSentence27 }}</b>
+
+<p style = 'color: red;'>{{ easyTutorialSentence28 }}</p>{{ easyTutorialSentence29 }}
 
 
-Keep in mind PyStage is in working development and not everything may work as intended yet.
+<p style = 'color: red;'>{{ easyTutorialSentence30 }}</p> {{ easyTutorialSentence31 }}
 
 
-When your project is generated this box will show up explaining what PyStage has not implemented yet.
+<p style = 'color: red;'>{{ easyTutorialSentence32 }}</p> {{ easyTutorialSentence33 }} 
+
+
+{{ easyTutorialSentence34 }}
+
+
+{{ easyTutorialSentence35 }}
 <img src="{{prefix}}{{ url_for('static', filename='img/box.png') }}" id = "box" alt="box" width="1050px"/>
  
-Please go to <a href="https://github.com/pystage/pystage/issues" target="_blank">
+{{ easyTutorialSentence36 }} <a href="https://github.com/pystage/pystage/issues" target="_blank">
 https://github.com/pystage/pystage/issues</a> 
-if you have any issues to report with PyStage.
+{{ easyTutorialSentence37 }}
 
         </pre>
         <button class="tutorialbtn back" >{{ back }}</button>
-        <button class="tutorialbtn next" >{{ next }}</button>
+        <button class="tutorialbtn next" >{{ back_step1 }}</button>
     </div>
 </div>

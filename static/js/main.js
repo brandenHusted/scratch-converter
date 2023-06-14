@@ -91,13 +91,11 @@ const tutorial_dog_part3 = $(".tutorial_dog_part3");
 const tutorial_medium = $(".tutorial_cat");
 const tutorial_cat_part2 = $(".tutorial_cat_part2");
 const tutorial_cat_part3 = $(".tutorial_cat_part3");
-const tutorial_cat_part4 = $(".tutorial_cat_part4");
 const tutorial_hard = $(".tutorial_squirrel");
 const tutorial_squirrel_part2 = $(".tutorial_squirrel_part2");
 const tutorial_squirrel_part3 = $(".tutorial_squirrel_part3");
 const tutorial_squirrel_part4 = $(".tutorial_squirrel_part4");
 const tutorial_squirrel_part5 = $(".tutorial_squirrel_part5");
-const tutorial_squirrel_part6 = $(".tutorial_squirrel_part6");
 let jumpThrough = "";
 
 $("#languageOptions").val($("#languageOptions").attr("data-lang"));
@@ -232,25 +230,42 @@ backToPart2InCatTutorial.on("click", () => {
   
 });
 
-const nextToPart4InCatTutorial = $(".tutorial_cat_part3 .next");
-nextToPart4InCatTutorial.on("click", () => {
-  tutorial_cat_part3.hide();
-  tutorial_cat_part4.show();
-  
-});
 
-const backToPart3InCatTutorial = $(".tutorial_cat_part4 .back");
-backToPart3InCatTutorial.on("click", () => {
-  tutorial_cat_part4.hide();
-  tutorial_cat_part3.show();
-  
-});
 
-const endTutorial2 = $(".tutorial_cat_part4 .next");
+const endTutorial2 = $(".tutorial_cat_part3 .next");
 endTutorial2.on("click", () => {
-  tutorial_cat_part4.hide();
+  tutorial_cat_part3.hide();
   step1.show();
   
+});
+
+// hiding and changing color of images
+$(document).ready(function() {
+  $('#catCode4').click(function() {
+    $(this).hide();
+    alert("English: Wrong! German: Falsch! Chinese: 错误的！");
+  });
+});
+
+$(document).ready(function() {
+  $('#catCode6').click(function() {
+    $(this).hide();
+    alert("English: Wrong! German: Falsch! Chinese: 错误的！");
+  });
+});
+
+$(document).ready(function() {
+  $('#pythonCodesample6').click(function() {
+    $(this).css('filter', 'hue-rotate(120deg)');
+    alert("English: Correct! German: Richtig! Chinese: 正确的！");
+  });
+});
+
+$(document).ready(function() {
+  $('#catCode5').click(function() {
+    $(this).css('filter', 'hue-rotate(120deg)');
+    alert("English: Correct! German: Richtig! Chinese: 正确的！");
+  });
 });
 
 /////////////////////////////////////////////////////////
@@ -313,17 +328,6 @@ backToPart3OfSquirrelTutorial.on("click", () => {
   
 });
 
-$("#codeSample2").on("click", () => {
-  alert("correct! This line of python code starts when green flag is clicked.");
-  
-});
-
-$("#go").on("click", (e) => {
-  const {offsetX, offsetY} = e;
-  if (((70 < offsetX) && (offsetX < 310)) && ((290 < offsetY) && (offsetY < 420))) {
-    alert("correct! This line of python code is broadcasting go!");
-  }
-})
 
 const nextToPart5OfSquirrelTutorial = $(".tutorial_squirrel_part4 .next");
 nextToPart5OfSquirrelTutorial.on("click", () => {
@@ -339,26 +343,61 @@ backToPart4OfSquirrelTutorial.on("click", () => {
   
 });
 
-const nextToPart6OfSquirrelTutorial = $(".tutorial_squirrel_part5 .next");
-nextToPart6OfSquirrelTutorial.on("click", () => {
-  tutorial_squirrel_part5.hide();
-  tutorial_squirrel_part6.show();
-  
-});
 
-const backToPart5OfSquirrelTutorial = $(".tutorial_squirrel_part6 .back");
-backToPart5OfSquirrelTutorial.on("click", () => {
-  tutorial_squirrel_part6.hide();
-  tutorial_squirrel_part5.show();
-  
-});
-
-const EndTutorial3 = $(".tutorial_squirrel_part6 .next");
+const EndTutorial3 = $(".tutorial_squirrel_part5 .next");
 EndTutorial3.on("click", () => {
-  tutorial_squirrel_part6.hide();
+  tutorial_squirrel_part5.hide();
   step1.show();
 });
 
+// hiding images
+$(document).ready(function() {
+  $('#dot').click(function() {
+    $(this).hide();
+    $('#go').hide();
+    alert("English: Wrong! German: Falsch! Chinese: 错误的！");
+  });
+});
+
+$(document).ready(function() {
+  $('#go').click(function() {
+    $(this).css('filter', 'hue-rotate(120deg)');
+    $('#dot').hide();
+    alert("English: Correct! This line of python code is broadcasting go!\nGerman: Richtig! Diese Python-Codezeile sendet „Go!“\nChinese: 正确的！这行python代码是广播go！");
+  });
+});
+
+$(document).ready(function() {
+  $('#someCode').click(function() {
+    $(this).hide();
+    $('#codeSample2').hide();
+    alert("English: Wrong! German: Falsch! Chinese: 错误的！");
+  });
+});
+
+$(document).ready(function() {
+  $('#codeSample2').click(function() {
+    $(this).css('filter', 'hue-rotate(120deg)');
+    $('#someCode').hide();
+    alert("English: Correct! This code starts when green flag is clicked!\nGerman: Richtig! Dieser Code startet, wenn die grüne Flagge angeklickt wird!\nChinese: 正确的！单击绿色标志时，此代码将启动！");
+  });
+});
+
+$(document).ready(function() {
+  $('#scratchExample2').click(function() {
+    $(this).hide();
+    $('#scratchExample1').hide();
+    alert("English: Wrong! German: Falsch! Chinese: 错误的！");
+  });
+});
+
+$(document).ready(function() {
+  $('#scratchExample1').click(function() {
+    $(this).css('filter', 'hue-rotate(120deg)');
+    $('#scratchExample2').hide();
+    alert("English: Correct! x goes with x2 and y goes with y2!\nGerman: Richtig! x passt zu x2 und y passt zu y2!\nChinese: 正确的！ x 与 x2 一致，y 与 y2 一致！");
+  });
+});
 /////////////////////////////////////////////////////////
 ////////                  Step2                   ////////
 /////////////////////////////////////////////////////////

@@ -1,112 +1,112 @@
 <div class="steps tutorial_squirrel none">
     <div class="centered-text">
         <pre style="font-family: 'Times New Roman', Times, serif;">
-<b style="font-family: 'Times New Roman', Times, serif;"> Master Tutorial </b>
+<b style="font-family: 'Times New Roman', Times, serif;"> {{ masterTutorial }} </b>
 
 
-This Tutorial will teach you how to use clones and messages in a Scratch game.
+{{ hardTutorialSentence1 }}
             <div class="btns">       
-Rules: 
+{{ hardTutorialSentence2 }} 
 
-Eat more than 100 donuts in 30 seconds to win! 
-
-
-Do not let Squirrel2 eats 100 donuts!
+{{ hardTutorialSentence3 }}
 
 
-Press w to move up, s to move down.
+{{ hardTutorialSentence4 }}
 
 
-a to move left and d to move right.
+{{ hardTutorialSentence5 }}
 
 
-Type how many copies of donuts you want.
+{{ hardTutorialSentence6 }}
 
 
-These donuts will spawn when you start the game.
+{{ hardTutorialSentence7 }}
+
+
+{{ hardTutorialSentence8 }}
                 <div class="squirrelGame">
                     <iframe src="https://scratch.mit.edu/projects/862149370/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
                 </div>
             </div>   
- <b>Can you think of a way you would improve this game to make it better for a user playing the game?</b>
+ <b>{{ hardTutorialSentence9 }}</b>
  
  
- The three sprites in this project are the squirrel, donuts and squirrel2.
+{{ hardTutorialSentence10 }}
  
  
- We will go through each sprite one by one.
+{{ hardTutorialSentence11 }}
 
 
- Here is the code for the squirrel sprite.
+{{ hardTutorialSentence12 }}
 
- <img src="{{prefix}}{{ url_for('static', filename='img/squirrelCode1.png') }}" id = "requirements" alt="requirements" width="600px" />
+ <img src="{{prefix}}{{ url_for('static', filename='img/squirrelCode1.png') }}" id = "squirrelCode1" alt="squirrelCode1" width="600px" />
 
  
- This code block makes the squirrel win after he eats over 100 donuts.
+ <u>{{ hardTutorialSentence13 }}</u>
  
  
- <b>When any key is pressed</b> if donuts is greater then 100 we loop the following forever.
+ <b>{{ hardTutorialSentence14Bold }}</b> {{ hardTutorialSentence14 }}
 
 
-We set the size to 1000%, the backdrop switches to stars and all other commands are stopped.
+ {{ hardTutorialSentence15 }}
 
 
-This code makes the squirrel lose after 30 seconds of play time.
+ <u>{{ hardTutorialSentence16 }}</u>
 
 
-<b>When any key is pressed</b> if donuts is less then 100 then we wait until the timer is greater then 30 seconds.
+<b>{{ hardTutorialSentence14Bold }}</b> {{ hardTutorialSentence17 }}
 
 
-We then switch backdrop to stars and stop all other commands.
+{{ hardTutorialSentence18 }}
 
 
-<b>When any key is pressed</b> if the squirrel is touching a Donut then we change the Donuts score by 1
+<b>{{ hardTutorialSentence14Bold }}</b> {{ hardTutorialSentence19 }}
 
 
-If the Donuts score is greater then 20 then shrink the squirrel to 30% the size and say a message.
+{{ hardTutorialSentence20 }}
 
 
- <img src="{{prefix}}{{ url_for('static', filename='img/squirrelCode2.png') }}" id = "requirements" alt="requirements" width="600px" />
+ <img src="{{prefix}}{{ url_for('static', filename='img/squirrelCode2.png') }}" id = "squirrelCode2" alt="squirrelCode2" width="600px" />
 
 
- <b>When green flag is clicked</b> reset Donuts score to 0, reset the size of the squirrel and the backdrop.
+ <b>{{ hardTutorialSentence21 }}</b> {{ hardTutorialSentence22 }}
 
 
-We say a message for 5 seconds and then say another message explaining the controls of the game.
+ {{ hardTutorialSentence23 }}
 
 
-The message explaining the controls stops when the score is over 20 because we then say our hard mode message in the first code image above.
+ {{ hardTutorialSentence24 }}
 
-Find this message: Hard Mode! I need 100 donuts!
-
-
-<b>When backdrop switches to stars</b> if the Donuts score is less then 100 then say
+ {{ hardTutorialSentence25 }}
 
 
-You Lose, I'm Hungry!
+<b>{{ hardTutorialSentence26 }}</b> {{ hardTutorialSentence27 }}
 
 
-Else if Donuts is greater then 100 then say
+{{ hardTutorialSentence28 }}
 
 
-Yum! I am Done!
+{{ hardTutorialSentence29 }}
 
 
-If Donuts equals 100 then in our code this mean you still lose the game and no message is displayed.
+{{ hardTutorialSentence30 }}
 
 
-<b>What message would you put in the code if the squirrels Donuts equals 100?</b>
+{{ hardTutorialSentence31 }}
 
 
- <img src="{{prefix}}{{ url_for('static', filename='img/squirrelCode3.png') }}" id = "requirements" alt="requirements" width="600px" />
+<b>{{ hardTutorialSentence32 }}</b>
+
+
+ <img src="{{prefix}}{{ url_for('static', filename='img/squirrelCode3.png') }}" id = "squirrelCode3" alt="squirrelCode3" width="600px" />
  
- This code executes the controls for the squirrel2.
+ <u>{{ hardTutorialSentence33 }}</u>
 
 
- If you press w you go up and if you press s you go down.
+ {{ hardTutorialSentence34 }}
 
 
- If you press a you go left and if you press d you go right.
+ {{ hardTutorialSentence35 }}
         </pre>
 
 

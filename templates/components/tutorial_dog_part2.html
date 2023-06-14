@@ -1,39 +1,44 @@
 <div class="steps tutorial_dog_part2 none">
     <div class="centered-text"> 
         <pre style="font-family: 'Times New Roman', Times, serif;">
-<b> Beginner Tutorial </b>  
+<b> {{ beginnerTutorial }} </b>  
 
     
-To use PyStage you first need to make a scratch project 
+{{ easyTutorialSentence25 }} 
 
-and save it to your computer or copy your project link.
+{{ easyTutorialSentence26 }}
 
         <div class = "btns">
             <img src="{{prefix}}{{ url_for('static', filename='img/saveDot.png') }}" id = "SaveDot" alt="SaveDot" width="500px" /> 
             <img src="{{prefix}}{{ url_for('static', filename='img/copyLink.png') }}" id = "copyLink" alt="copyLink" width="500px" height ="200"/> 
         </div>
 
+{{ easyVideoSentence }}
 
-<b>Errors that can happen when generating</b>
+<a href="https://www.youtube.com/watch?v=Bo3kUF9k0Vg" target="_blank">
+https://scratch.mit.edu/projects/845126622/
+</a>
 
-<p style = 'color: red;'>Error in generating file!</p>This means that the website could not load the content for your project.
+<b>{{ easyTutorialSentence27 }}</b>
 
-
-<p style = 'color: red;'>Invalid URL or internal error!</p> URL is incorrect or scratch is having server issues while you are generating your project.
-
-
-<p style = 'color: red;'>Unknown Error</p> Most likely there is something not implemented yet that you used in your project. 
-
-
-Keep in mind PyStage is in working development and not everything may work as intended yet.
+<p style = 'color: red;'>{{ easyTutorialSentence28 }}</p>{{ easyTutorialSentence29 }}
 
 
-When your project is generated this box will show up explaining what PyStage has not implemented yet.
+<p style = 'color: red;'>{{ easyTutorialSentence30 }}</p> {{ easyTutorialSentence31 }}
+
+
+<p style = 'color: red;'> {{ easyTutorialSentence32 }}</p>  {{ easyTutorialSentence33 }} 
+
+
+{{ easyTutorialSentence34 }}
+
+
+{{ easyTutorialSentence35 }}
 <img src="{{prefix}}{{ url_for('static', filename='img/box.png') }}" id = "box" alt="box" width="1050px"/>
  
-Please go to <a href="https://github.com/pystage/pystage/issues" target="_blank">
+{{ easyTutorialSentence36 }} <a href="https://github.com/pystage/pystage/issues" target="_blank">
 https://github.com/pystage/pystage/issues</a> 
-if you have any issues to report with PyStage.
+{{ easyTutorialSentence37 }}
 <button class="tutorialbtn back" >{{ back }}</button>
 <button class="tutorialbtn next" >{{ next }}</button>
         </pre>

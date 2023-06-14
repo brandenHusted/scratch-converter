@@ -1,16 +1,16 @@
 <div class="steps tutorial_dog none">
     <div class="centered-text">
         <pre style="font-family: 'Times New Roman', Times, serif;">
-<b style="font-family: 'Times New Roman', Times, serif;"> Beginner Tutorial </b>
+<b style="font-family: 'Times New Roman', Times, serif;"> {{ beginnerTutorial }} </b>
             
             
-This tutorial will help you learn how to convert any scratch project you make into the Python programming language.
+{{ easyTutorialSentence1 }}
 
 
-This image below shows Dot the dog in his natural habitat which is...SCRATCH!
+{{ easyTutorialSentence2 }}
 
 
-Click on the code below if you want to learn how to make it yourself!
+{{ easyTutorialSentence3 }}
 
             <div class = "btns">
                 <img src="{{prefix}}{{ url_for('static', filename='img/dot.png') }}" id = "ScratchCodeForDot" alt="ScratchCodeForDot" width="485px" height="402px" align="center"/>
@@ -20,24 +20,24 @@ Click on the code below if you want to learn how to make it yourself!
         <p>
             <pre style="font-family: 'Times New Roman', Times, serif;">
 
-Scratch is the world's largest free coding community for kids and is paving the way for the future of computer science.
+{{ easyTutorialSentence4 }}
 
-If it is your first time with scratch go to: 
+{{ easyTutorialSentence5 }}
         <a href="http://scratch.mit.edu" target="_blank">
 http://scratch.mit.edu</a>
 
 
-If you are new to scratch click <b>Join Scratch</b> else click <b>Sign in</b>.
+{{ easyTutorialSentence6 }}
 
 
-Now you can make your account and click create to create your project!
+{{ easyTutorialSentence7 }}
 
-<small>You can start with the example above if you do not know where to start.</small>
+{{ easyTutorialSentence8 }}
 
 
-<b> Learning about how the conversion works </b>
+<b> {{ easyTutorialSentence9 }} </b>
 
-This next image is part of this project converted into python.
+{{ easyTutorialSentence10 }}
             </pre>
         </p>
         <img src="{{prefix}}{{ url_for('static', filename='img/dotPython.png') }}" id = "PythonForDot" alt="PythonForDot" width="1050px" align="center"/>
@@ -45,11 +45,11 @@ This next image is part of this project converted into python.
             <pre style="font-family: 'Times New Roman', Times, serif;">
                 
                 
-Can you find when the dog moves 10 steps in the python code and the scratch code?
+{{ easyTutorialSentence11 }}
                 
                 
                
-Here is an easy example of the conversion process!
+{{ easyTutorialSentence12 }}
 
         
         <div class = "btns"> 
@@ -58,48 +58,48 @@ Here is an easy example of the conversion process!
             <img src="{{prefix}}{{ url_for('static', filename='img/dotPython.png') }}" id = "PythonForDot" alt="PythonForDot" width="700px" height="300px" align="center"/> 
         </div>
 
-<b> Learning Python code </b>
+<b> {{ easyTutorialSentence13 }} </b>
 
-Self in the code below refers to the sprite we used in our program in this case our dog named Dot is our sprite.
-
-
-Self represents the instance of a class and in this case it represents our Dog named Dot at its current state.
+{{ easyTutorialSentence14 }}
 
 
-Self is then used to move the dog 10 steps and make him bark.
+{{ easyTutorialSentence15 }}
+
+
+{{ easyTutorialSentence16 }}
 
  
 <p style="color: red;"> def</p> 
-defines a function that starts when the green flag is clicked so the code can run.
+{{ easyTutorialSentence17 }}
 
 
         <div class = "btns">
             <img src="{{prefix}}{{ url_for('static', filename='img/downArrow.png') }}" id = "downArrow" alt="downArrow" width="400px" height="300px" align="center"/>
 
-The PyStage enviroment for every project is created in the code below 
+{{ easyTutorialSentence18 }} 
 
 
-This makes our program include sounds, images, variables, costumes and a stage.
+{{ easyTutorialSentence19 }} 
 
 
-Can you find the line of code where pystage imports the stage and sprite?
+{{ easyTutorialSentence20 }} 
 
 
-What is the number for center_y in 'dot_c'? 
+{{ easyTutorialSentence21 }}
 
-Hint: Dot_c is a costume for dot that moves his legs when he moves.
+{{ easyTutorialSentence22 }}
 
         </div>
 
-        <img src="{{prefix}}{{ url_for('static', filename='img/upperPythonCode.png') }}" id = "PythonForDot" alt="PythonForDot" width="1050px" align="center"/>
+        <img src="{{prefix}}{{ url_for('static', filename='img/upperPythonCode.png') }}" id = "UpPythonForDot" alt="UpPythonForDot" width="1050px" align="center"/>
 
 
-This program does not run without this last line of code at the end that calls the function when_program_starts_1 and starts the stage.
+{{ easyTutorialSentence23 }}
 
         
-        <img src="{{prefix}}{{ url_for('static', filename='img/lowerPythonCode.png') }}" id = "PythonForDot" alt="PythonForDot" width="1050px" align="center"/>
+        <img src="{{prefix}}{{ url_for('static', filename='img/lowerPythonCode.png') }}" id = "DownPythonForDot" alt="DownPythonForDot" width="1050px" align="center"/>
 
-I think you are learning!
+{{ easyTutorialSentence24 }}
 
              </pre>
         </p>
