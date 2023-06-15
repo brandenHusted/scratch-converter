@@ -51,7 +51,7 @@
   "easyTutorialSentence11": "Können Sie im Python-Code und im Scratch-Code erkennen, wann der Hund 10 Schritte macht?",
   "easyTutorialSentence12": "Hier ist ein einfaches Beispiel für den Konvertierungsprozess!",
   "easyTutorialSentence13": "Python-Code lernen",
-  "easyTutorialSentence14": "„Selbst“ im folgenden Code bezieht sich auf das Sprite, das wir in unserem Programm verwendet haben. In diesem Fall ist unser Hund namens Dot unser Sprite.",
+  "easyTutorialSentence14": "„Selbst“ im obigen Code bezieht sich auf das Sprite, das wir in unserem Programm verwendet haben. In diesem Fall ist unser Hund namens Dot unser Sprite.",
   "easyTutorialSentence15": "Self repräsentiert die Instanz einer Klasse und in diesem Fall unseren Hund namens Dot in seinem aktuellen Zustand.",
   "easyTutorialSentence16": "Dann wird „Selbst“ verwendet, um den Hund 10 Schritte zu bewegen und ihn zum Bellen zu bringen.",
   "easyTutorialSentence17": "definiert eine Funktion, die startet, wenn auf die grüne Flagge geklickt wird, damit der Code ausgeführt werden kann.",
@@ -125,6 +125,8 @@
   "mediumTutorialSentence26": "Wenn Sie die grüne Flagge drücken, werden die X- und Y-Koordinaten auf ihre ursprüngliche Position zurückgesetzt.",
   "mediumTutorialSentence27": "Dies ist unser in Python konvertiertes Projekt.",
   "mediumTutorialSentence28": "Können Sie die Python-Funktion finden, die mit den Scratch-Blöcken übereinstimmt? Versuchen Sie, auf den Code oben zu klicken, um ihn zu erraten.",
+  "mediumTutorialSentence29": "Der Code, der am Anfang des Tutorials fehlte, war, als die d-Taste gedrückt wurde und Sie „Cheesy Puffs“ berührten",
+  "mediumTutorialSentence30": "Ihre Punktzahl ändert sich um 1",
   "hardTutorialSentence1": "In diesem Tutorial erfahren Sie, wie Sie Klone und Nachrichten in einem Scratch-Spiel verwenden.",
   "hardTutorialSentence2": "Regeln:",
   "hardTutorialSentence3": "Iss mehr als 100 Donuts in 30 Sekunden, um zu gewinnen!",
@@ -218,7 +220,8 @@
   "TutorialSentence10": "9. Klicken Sie auf Töne.",
   "TutorialSentence11": "10. Ziehen Sie Start Sound Bark in den Skriptbereich.",
   "TutorialSentence12": "11. Stellen Sie sicher, dass alle 3 Schritte in genau dieser Reihenfolge miteinander verbunden sind",
-  "TutorialSentence13": "12. Drücken Sie die grüne Flagge, um Ihr Projekt auszuführen."
+  "TutorialSentence13": "12. Drücken Sie die grüne Flagge, um Ihr Projekt auszuführen.",
+  "projectUrl": "Projekt-URL:"
 
 
 }

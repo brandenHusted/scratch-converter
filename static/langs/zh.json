@@ -51,7 +51,7 @@
   "easyTutorialSentence11": "你能在python代码和scratch代码中找到狗什么时候移动10步吗？",
   "easyTutorialSentence12": "这是转换过程的简单示例！",
   "easyTutorialSentence13": "学习Python代码",
-  "easyTutorialSentence14": "下面代码中的 Self 指的是我们在程序中使用的精灵，在这种情况下，我们名为 Dot 的狗就是我们的精灵。",
+  "easyTutorialSentence14": "Self in the code above refers to the sprite we used in our program in this case our dog named Dot is our sprite.",
   "easyTutorialSentence15": "Self 代表一个类的实例，在这种情况下，它代表当前状态下名为 Dot 的 Dog。",
   "easyTutorialSentence16": "然后使用 Self 将狗移动 10 步并让他吠叫。",
   "easyTutorialSentence17": "定义一个函数，该函数在单击绿色标志时启动，以便代码可以运行。",
@@ -125,6 +125,8 @@
   "mediumTutorialSentence26": "When you press the green flag the x and y cordinates are reset to their original position.",
   "mediumTutorialSentence27": "This is our project converted into Python.",
   "mediumTutorialSentence28": "Can you find the Python function the matches with the Scratch blocks? Try and click on the code above to guess.",
+  "mediumTutorialSentence29": "The code that was missing from the beginning of the tutorial was when the d key is pressed and you are touching Cheesy Puffs ",
+  "mediumTutorialSentence30": "your score Changes by 1",
   "hardTutorialSentence1": "This tutorial will teach you how to use clones and messages in a Scratch game.",
   "hardTutorialSentence2": "Rules:",
   "hardTutorialSentence3": "Eat more than 100 donuts in 30 seconds to win! ",
@@ -220,6 +222,7 @@
   "TutorialSentence10": "9. Click on Sounds.",
   "TutorialSentence11": "10. Drag start sound bark over to the script area.",
   "TutorialSentence12": "11. Make sure all 3 steps are connected to each other in this exact order",
-  "TutorialSentence13": "12. Press the green flag to run your project."
+  "TutorialSentence13": "12. Press the green flag to run your project.",
+  "projectUrl": "Project Url:"
 
 }
